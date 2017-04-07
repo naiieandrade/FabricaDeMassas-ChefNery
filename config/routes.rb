@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/new'
+
   resources :ingredients
   resources :products
 
@@ -7,7 +9,6 @@ Rails.application.routes.draw do
   get 'home/about'
   get 'home/contact'
 
-  devise_for :users
 
   get "home" => "home#index"
   get "cadastrar" => "users/sign_up"
