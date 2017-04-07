@@ -11,6 +11,4 @@ Rails.application.routes.draw do
 
 
   get "home" => "home#index"
-  get "cadastrar" => "users/sign_up"
-  get "login" => "devise/sessions#new"
 end
