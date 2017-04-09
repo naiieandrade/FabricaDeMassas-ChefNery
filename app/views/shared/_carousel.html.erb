@@ -1,0 +1,33 @@
+<header id="myCarousel" class="carousel slide">
+
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+        <li data-target="#myCarousel" data-slide-to="3"></li>
+        <li data-target="#myCarousel" data-slide-to="4"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        <% (0..4).each do |index|%>
+            <% item = "item" %>
+            <% if index == 0 %>
+                <% item = "item active" %>
+            <% end %>
+            <%= content_tag(:div, class:item) do %>    
+                <%= content_tag(:div, "", class:"fill", style:"background-image:url(#{getImages()[index]})") %>
+                <%= content_tag(:div, "", class:"carousel-caption") %>
+            <% end %>
+        <% end %>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</header>
