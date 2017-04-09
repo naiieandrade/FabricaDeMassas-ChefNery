@@ -132,6 +132,3 @@ DEPENDENCIES
   rails (= 4.2.6)
   sqlite3
   turbolinks
-
-BUNDLED WITH
-   1.13.6
