@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   resources :products
   resources :users
 
+  get 'orders/show'
+  get 'orders/new'
+
+  resources :ingredients
+  resources :products
+  resources :orders
+
   root "home#index"
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
