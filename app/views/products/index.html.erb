@@ -2,32 +2,36 @@
 
   <p id="notice"><%= notice %></p>
 
-  <h1>Listing Products</h1>
+  <center> <h1>Lista de Produtos</h1> </center>
+  <%= tag(:br) %> 
 
-  <table>
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @products.each do |product, index| %>
-        <tr>
-          <td><%= product.title %></td>
-          <td>R$<%= product.price %></td>
-          <td><%= link_to 'Show', product %></td>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+  <center>
+    <div class="row">
+      <%= render 'carrousel' %>
+      <% cont = 0 %>
+      <% @products.each do |product| %>
+          <div class="col-sm-3 col-lg-3 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag "padrao.jpg", class: "img"%>
+                <div class="caption">
+                  <h4 class="pull-right"> <%= "R$ #{format("%.2f", product.price)}" %> </h4>
+                  <h4> 
+                    <%= link_to product_path(product) do %> 
+                      <%= product.title %>
+                    <% end %>
+                  </h4>
+                </div>
+            </div>
+          </div>
       <% end %>
-    </tbody>
-  </table>
+      
+    </div>
+  </center>
+  
+  <% 2.times do %>
+    <%= tag(:br) %>
+  <% end %>
 
-  <br>
-
-  <%= link_to 'New Product', new_product_path %>
+  <center> <%= link_to 'New Product', new_product_path %> </center>
 
 <% end -%>
