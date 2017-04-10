@@ -54,3 +54,4 @@ bower.json
 
 # Ignore vim swap files
 *.swp
+*.swo
