@@ -1,15 +1,21 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  get 'users/new'
+
   resources :ingredients
   resources :products
+  resources :users
 
   root "home#index"
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
 
   get 'home/about'
   get 'home/contact'
 
-  devise_for :users
-
   get "home" => "home#index"
-  get "cadastrar" => "users/sign_up"
-  get "login" => "devise/sessions#new"
 end

@@ -1,0 +1,7 @@
+</h1>Perfil do Usuário</h1>
+<%= @user.name %>, <%= @user.email %>
+
+<% if current_user?(@user) %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "Você tem certeza?" } %>
+  <% end %>

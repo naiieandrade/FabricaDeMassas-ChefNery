@@ -11,7 +11,7 @@
 
 	<!-- Bootstrap Core CSS -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
-	
+
 	<!-- Custom CSS -->
 	<link href="https://blackrockdigital.github.io/startbootstrap-modern-business/css/modern-business.css" rel="stylesheet">
 
@@ -19,7 +19,7 @@
   <link href="css/products.css" rel="stylesheet">
   <link href="css/e-boots.css" rel="stylesheet">
   <link href="css/shop-homepage.css" rel="stylesheet">
-  
+
 	<!-- Custom Fonts -->
 	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -51,21 +51,12 @@
               <ul class="nav navbar-nav navbar-right">
                   <li>
                       <%= link_to 'Sobre', home_about_path %>
-                  </li>   
-                  <li>       
-                      <%= link_to 'Contato', home_contact_path %>
-                      <!--
-                      <%= link_to new_user_registration_path() do %>
-                        Cadastrar
-                      <% end %> -->
                   </li>
                   <li>
-                      <!--
-                      <%= link_to new_user_session_path() do %>
-                        Login
-                      <% end %>
-                      -->
+                      <%= link_to 'Contato', home_contact_path %>
+
                   </li>
+
                   <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Culinária <b class="caret"></b></a>
                       <ul class="dropdown-menu">
@@ -87,16 +78,15 @@
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entrar <b class="caret"></b></a>
                       <ul class="dropdown-menu">
                           <li>
-                              <!-- <a href="full-width.html">Login</a> -->
-                              <%= link_to new_user_session_path() do %>
-                              Login
+                              <% if logged_in? %>
+                                <li><%= link_to "All Users", users_path %></li>
+                                <li><%= link_to "Profile", current_user %></li>
+                                <li><%= link_to "Update", edit_user_path(current_user) %></li>
+                                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+                              <% else %>
+                                <li><%= link_to "Log in", login_path %></li>
+                                <li><%= link_to "Cadastrar", new_user_path %></li>
                               <% end %>
-                          </li>
-                          <li>
-                             <!-- <a href="sidebar.html">Cadastrar</a> -->
-                             <%= link_to new_user_registration_path() do %>
-                              Cadastrar
-                             <% end %>
                           </li>
                       </ul>
                   </li>
@@ -106,9 +96,10 @@
   </nav>
 </head>
 <body>
-<!-- To FeedBack about status of devise -->
-<!--<p class="notice"><%= notice %></p>-->
-<!--<p class="alert"><%= alert %></p>-->
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
 <%= yield %>
 
 </body>
