@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Bem-Vindos a Fábrica de Massas do Chef Nery!
+        </h1>
+    </div>
+    
+
+<% (0..2).each do |index| %>
+    <div class="col-md-4"> 
+        <%= content_tag(:div, class: ["panel","panel-default"]) do %>
+            
+            <%= content_tag(:div, class: "panel-heading")  do %> 
+            
+            <h4>
+                <%= content_tag(:i, "",class: ["fa", "fa-fw", "fa-" + getPanelInfo()[index][3]])%>
+                <%= getPanelInfo()[index][0] %>
+            </h4>
+            <% end %>   
+            
+            <%= content_tag(:div, class: "panel-body")  do %> 
+                <%= content_tag(:p, getPanelInfo()[index][1]) %>
+            <% end %>
+            
+            <%= link_to(getPanelInfo()[index][2], root_path) %>
+       
+        <% end %>
+    </div>
+<% end %>         
+
+        
+    
+
+
+     
