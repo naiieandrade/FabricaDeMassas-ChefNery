@@ -1,17 +1,6 @@
-<% if !@order.products.blank? %>
-	<% @order.products.each do |product| %>
-
-		<%= product.name %>	<br />
-		<%= product.price %> <br />
-		<%= product.category %> <br />
-		<%= product.price %>	<br />
-
-  <% end %>
-<% end %>
-
 <%= form_for @order do |f| %>
 
-	<%= f.text_field :shippment_address, :placeholder => "Endereço" %> <br /> <br />
-	<%= f.submit "Enviar pedido" %>
+	<%= f.text_field :shippment_address, :placeholder => 'Endereço', class: 'form-control' %> <br />
+	<%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
 
 <% end %>
