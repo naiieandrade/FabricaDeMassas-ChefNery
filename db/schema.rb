@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409230624) do
+ActiveRecord::Schema.define(version: 20170410030910) do
+
+  create_table "Orders_Products", id: false, force: :cascade do |t|
+    t.integer "order_id",   null: false
+    t.integer "product_id", null: false
+  end
+
+  add_index "Orders_Products", ["order_id", "product_id"], name: "index_Orders_Products_on_order_id_and_product_id"
+  add_index "Orders_Products", ["product_id", "order_id"], name: "index_Orders_Products_on_product_id_and_order_id"
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
@@ -29,7 +37,7 @@ ActiveRecord::Schema.define(version: 20170409230624) do
   add_index "ingredients_products", ["product_id"], name: "index_ingredients_products_on_product_id"
 
   create_table "orders", force: :cascade do |t|
-    t.string   "shippment_address"
+    t.text     "shippment_address"
     t.float    "amount"
     t.integer  "products_number"
     t.datetime "created_at",        null: false
