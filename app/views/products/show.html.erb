@@ -1,0 +1,38 @@
+<%= content_tag :div, :class => "container" do -%>
+
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Produto:</strong>
+    <%= @product.title %>
+  </p>
+
+  <p>
+    <strong>Descrição:</strong>
+    <%= @product.description %>
+  </p>
+
+  <p>
+    <strong>Categoria:</strong>
+    <%= @product.category.to_s %>
+  </p>
+
+  <p>
+    <strong>Preço:</strong>
+    R$<%= @product.price %>
+  </p>
+
+  <p>
+    <strong>Ingredientes:</strong>
+    <ul>
+    <%@product.ingredients.each do |i|%>
+        <li><%= i.title %></li>
+        <!-- <%= i.price %> -->
+    <% end %>
+    </ul>
+  </p>
+
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+
+<% end -%>

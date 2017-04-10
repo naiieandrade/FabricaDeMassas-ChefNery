@@ -1,0 +1,37 @@
+<%= content_tag :div, :class => "container" do -%>
+
+  <p id="notice"><%= notice %></p>
+
+  <center> <h1>Lista de Produtos</h1> </center>
+  <%= tag(:br) %> 
+
+  <center>
+    <div class="row">
+      <%= render 'carrousel' %>
+      <% cont = 0 %>
+      <% @products.each do |product| %>
+          <div class="col-sm-3 col-lg-3 col-md-3">
+            <div class="thumbnail">
+              <%= image_tag "padrao.jpg", class: "img"%>
+                <div class="caption">
+                  <h4 class="pull-right"> <%= "R$ #{format("%.2f", product.price)}" %> </h4>
+                  <h4> 
+                    <%= link_to product_path(product) do %> 
+                      <%= product.title %>
+                    <% end %>
+                  </h4>
+                </div>
+            </div>
+          </div>
+      <% end %>
+      
+    </div>
+  </center>
+  
+  <% 2.times do %>
+    <%= tag(:br) %>
+  <% end %>
+
+  <center> <%= link_to 'New Product', new_product_path %> </center>
+
+<% end -%>
