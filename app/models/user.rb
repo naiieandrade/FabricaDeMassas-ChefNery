@@ -1,3 +1,6 @@
+#GRASP pattern: Low coupling does not have any dependency with other classes
+
+
 class User < ActiveRecord::Base
 	before_save { self.email = email.downcase }
 	validates :name,  presence: true, length: { maximum: 50 }

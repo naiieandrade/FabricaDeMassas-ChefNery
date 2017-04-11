@@ -1,3 +1,5 @@
+#GRASP pattern: Creator in line 4
+
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :ingredients
   has_and_belongs_to_many :orders
