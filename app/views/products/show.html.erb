@@ -1,34 +1,38 @@
-<p id="notice"><%= notice %></p>
+<%= content_tag :div, :class => "container" do -%>
 
-<p>
-  <strong>Produto:</strong>
-  <%= @product.title %>
-</p>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Descrição:</strong>
-  <%= @product.description %>
-</p>
+  <p>
+    <strong>Produto:</strong>
+    <%= @product.title %>
+  </p>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @product.category.to_s %>
-</p>
+  <p>
+    <strong>Descrição:</strong>
+    <%= @product.description %>
+  </p>
 
-<p>
-  <strong>Preço:</strong>
-  R$<%= @product.price %>
-</p>
+  <p>
+    <strong>Categoria:</strong>
+    <%= @product.category.to_s %>
+  </p>
 
-<p>
-  <strong>Ingredientes:</strong>
-  <ul>
-  <%@product.ingredients.each do |i|%>
-      <li><%= i.title %></li>
-      <!-- <%= i.price %> -->
-  <% end %>
-  </ul>
-</p>
+  <p>
+    <strong>Preço:</strong>
+    R$<%= @product.price %>
+  </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+  <p>
+    <strong>Ingredientes:</strong>
+    <ul>
+    <%@product.ingredients.each do |i|%>
+        <li><%= i.title %></li>
+        <!-- <%= i.price %> -->
+    <% end %>
+    </ul>
+  </p>
+
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+  <%= link_to 'Back', products_path %>
+
+<% end -%>

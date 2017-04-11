@@ -2,6 +2,8 @@
 
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :ingredients
+  has_and_belongs_to_many :orders
+
   enum category: ["Culinária Italiana", "Culinária Oriental", "Culinária Árabe", "Culinária Brasileira"]
 
   TITLE_MIN_LENGTH = 3

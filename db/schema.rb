@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410011814) do
+ActiveRecord::Schema.define(version: 20170410030910) do
+
+  create_table "Orders_Products", id: false, force: :cascade do |t|
+    t.integer "order_id",   null: false
+    t.integer "product_id", null: false
+  end
+
+  add_index "Orders_Products", ["order_id", "product_id"], name: "index_Orders_Products_on_order_id_and_product_id"
+  add_index "Orders_Products", ["product_id", "order_id"], name: "index_Orders_Products_on_product_id_and_order_id"
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +35,14 @@ ActiveRecord::Schema.define(version: 20170410011814) do
 
   add_index "ingredients_products", ["ingredient_id"], name: "index_ingredients_products_on_ingredient_id"
   add_index "ingredients_products", ["product_id"], name: "index_ingredients_products_on_product_id"
+
+  create_table "orders", force: :cascade do |t|
+    t.text     "shippment_address"
+    t.float    "amount"
+    t.integer  "products_number"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "title"
@@ -45,21 +61,13 @@ ActiveRecord::Schema.define(version: 20170410011814) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
