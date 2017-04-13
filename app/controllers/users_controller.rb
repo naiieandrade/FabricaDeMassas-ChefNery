@@ -54,7 +54,10 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+        if !(is_administrator current_user)
+            params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        else
+            params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_administrator)
+        end
     end
 end
