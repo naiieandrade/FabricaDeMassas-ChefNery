@@ -1,5 +1,13 @@
+<% if logged_in? && !(is_administrator current_user) %>
+  <% redirect_home %>
+<% end %>
+
 <% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
+<% if is_administrator current_user %>
+  <h1>Cadastro de administrador</h1>
+<% else %>
+  <h1>Cadastro</h1>
+<% end %>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
