@@ -1,0 +1,11 @@
+<% if @order.errors.any? || @order_item.errors.any? %>
+	<% @order.errors.each do |key,value| %>
+		<% puts "Order: " + value%>
+	<%end%>
+	<% @order_item.errors.each do |key,value| %>
+		<% puts value%>
+	<%end%>
+alert("not valid.")
+<% else %>
+  $(".cart-text").html("<%= escape_javascript(render 'layouts/cart_text') %>")
+<% end %>

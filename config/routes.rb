@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
+  get 'carts/show'
 
+  get 'order_items/create'
+
+  get 'order_items/update'
+
+  get 'order_items/destroy'
+
+  get 'sessions/new'
+  
   get 'users/new'
 
   resources :ingredients
   resources :products
   resources :users
-
+  resource :cart, only: [:show]
+  resources :order_items, only: [:create, :update, :destroy]
   get 'orders/show'
   get 'orders/new'
 
