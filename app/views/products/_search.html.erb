@@ -1,5 +1,4 @@
 <%= form_tag(products_search_path, :method => :get) do%>
-<%= text_field_tag :search, nil, placeholder:"Insira o que eśtá procurando"%>
-<% submit_tag()
-
+	<%= text_field_tag :find, nil, placeholder:"Insira o que está procurando"%>
+	<%= submit_tag "Pesquisar", :name => nil %> 
 <% end %>

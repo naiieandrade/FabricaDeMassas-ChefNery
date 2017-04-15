@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @products = Product.all
+    @products = Product.search(params[:find])
   end
 
   # GET /products/1
@@ -19,13 +20,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1/edit
   def edit
-  end
-
-  def search
-    if params[:find] 
-      @product = params[:find]
-      @products = Product.where("NAME LIKE ?", "%#{params[:find]}%")
-    end
   end
 
   # POST /products
@@ -57,7 +51,7 @@ class ProductsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find_by(:id)
     end
 
     # Only allow a trusted parameter "white list" through.
