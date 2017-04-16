@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
 
   def self.search(search)
   	if search
-    	where(["NAME LIKE ?", "%#{search}%"])
+    	where(["TITLE LIKE ?", "%#{search}%"])
     else
     	all
     end
