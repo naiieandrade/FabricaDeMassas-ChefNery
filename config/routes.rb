@@ -26,6 +26,6 @@ Rails.application.routes.draw do
 
   get "home" => "home#index"
 
-  get 'products/search' => 'products#search'
+  get 'products/index'
 
 end
