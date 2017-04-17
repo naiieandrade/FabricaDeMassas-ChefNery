@@ -26,8 +26,10 @@
       <%= f.label :password_confirmation, "Confirmation" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-      <%= f.label :is_administrator, "É administrador?" %>
-      <%= f.check_box :is_administrator %>
+      <% if is_administrator current_user %>
+        <%= f.label :is_administrator, "É administrador?" %>
+        <%= f.check_box :is_administrator %>
+      <% end %>
 
       <%= content_tag(:br) %>
 

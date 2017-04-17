@@ -79,10 +79,14 @@
                       <ul class="dropdown-menu">
                           <li>
                               <% if logged_in? %>
-                                <li><%= link_to "All Users", users_path %></li>
-                                <li><%= link_to "Profile", current_user %></li>
-                                <li><%= link_to "Update", edit_user_path(current_user) %></li>
-                                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+                                <% if is_administrator current_user %>
+                                  <li><%= link_to "Todos Usuários", users_path %></li>
+                                  <li><%= link_to "Cadastrar outros usuários", users_new_path %></li>
+                                <% end %>
+                                <li><%= link_to "Perfil", current_user %></li>
+                                <li><%= link_to "Atualizar Perfil", edit_user_path(current_user) %></li>
+                                <li><%= link_to "Sair", logout_path, method: "delete" %></li>
+
                               <% else %>
                                 <li><%= link_to "Log in", login_path %></li>
                                 <li><%= link_to "Cadastrar", new_user_path %></li>

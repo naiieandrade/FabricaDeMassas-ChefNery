@@ -41,4 +41,5 @@ module SessionsHelper
 		user != nil && user.is_administrator
 	end
 
+
 end
