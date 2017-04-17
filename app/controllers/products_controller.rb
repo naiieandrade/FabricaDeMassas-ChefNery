@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   # GET /products
   def index
     @products = Product.all
+    @products = Product.search(params[:find])
   end
 
   # GET /products/1
