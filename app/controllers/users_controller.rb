@@ -10,15 +10,22 @@ class UsersController < ApplicationController
     end
 
     def new
-        @user = User.new
+        if !logged_in? || (is_administrator current_user)
+            @user = User.new
+        else
+            redirect_to root_path
+        end
     end
 
     def create
     @user = User.new(user_params)    # Not the final implementation!
-    if @user.save
+    if @user.save ||     (current_user != nil && !current_user.is_administrator)
         log_in @user
         flash[:success] = "Usuário criado com sucesso!"
         redirect_to @user
+    elsif @user.save && current_user != nil && current_user.is_administrator
+        flash[:success] = "Administrador criado com sucesso!"
+        redirect_to users_url
     else
       render 'new'
     end
@@ -47,7 +54,10 @@ class UsersController < ApplicationController
     private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+        if !(is_administrator current_user)
+            params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        else
+            params.require(:user).permit(:name, :email, :password, :password_confirmation, :is_administrator)
+        end
     end
 end

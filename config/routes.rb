@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   get  '/signup',  to: 'users#new'
   post '/signup',  to: 'users#create'
 
+  post '/users/new'
+
   get 'home/about'
   get 'home/contact'
 

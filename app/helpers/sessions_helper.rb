@@ -36,4 +36,10 @@ module SessionsHelper
 		user == current_user
 
 	end
+
+	def is_administrator(user)
+		user != nil && user.is_administrator
+	end
+
+
 end

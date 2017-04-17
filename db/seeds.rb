@@ -17,3 +17,5 @@ products = Product.create([
       category: "Culinária Brasileira", price: 25,
       :ingredients => Ingredient.where(:title => ['Ovos', 'Carnde de Sol', 'Mandioca' 'Queijo'])}
     ])
+
+admin = User.create(name: "admin", email:"admin@admin.com", password:"123456", is_administrator: true)
