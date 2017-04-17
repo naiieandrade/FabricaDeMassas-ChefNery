@@ -1,3 +1,5 @@
+#GRASP pattern: Creator in line 4
+
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :ingredients
   has_and_belongs_to_many :orders
@@ -9,4 +11,14 @@ class Product < ActiveRecord::Base
 
   validates :title, presence: true, :length => {:minimum => TITLE_MIN_LENGTH}, uniqueness: true
   validates :description, presence: true, :length => {:minimum => DESCRIPTION_MIN_LENGTH}
+
+  def self.search(search)
+  	if search
+    	where(["TITLE LIKE ?", "%#{search}%"])
+    else
+    	all
+    end
+  end
+
+
 end
