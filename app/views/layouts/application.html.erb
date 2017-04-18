@@ -54,8 +54,11 @@
                   </li>
                   <li>
                       <%= link_to 'Contato', home_contact_path %>
-
                   </li>
+
+				  <% if logged_in? %>
+			         <li><%= render 'layouts/cart_text' %></li>
+				  <% end %>
 
                   <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Culinária <b class="caret"></b></a>
@@ -86,7 +89,11 @@
                                 <li><%= link_to "Perfil", current_user %></li>
                                 <li><%= link_to "Atualizar Perfil", edit_user_path(current_user) %></li>
                                 <li><%= link_to "Sair", logout_path, method: "delete" %></li>
-
+			                    <li><%= render 'layouts/cart_text' %></li>
+                                <li><%= link_to "All Users", users_path %></li>
+                                <li><%= link_to "Profile", current_user %></li>
+                                <li><%= link_to "Update", edit_user_path(current_user) %></li>
+                                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
                               <% else %>
                                 <li><%= link_to "Log in", login_path %></li>
                                 <li><%= link_to "Cadastrar", new_user_path %></li>
