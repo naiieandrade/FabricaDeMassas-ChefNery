@@ -18,18 +18,18 @@ class UsersController < ApplicationController
     end
 
     def create
-    @user = User.new(user_params)    # Not the final implementation!
-    if @user.save ||     (current_user != nil && !current_user.is_administrator)
-        log_in @user
-        flash[:success] = "Usuário criado com sucesso!"
-        redirect_to @user
-    elsif @user.save && current_user != nil && current_user.is_administrator
-        flash[:success] = "Administrador criado com sucesso!"
-        redirect_to users_url
-    else
-      render 'new'
-    end
-  end
+	    @user = User.new(user_params)    # Not the final implementation!
+	    if @user.save ||     (current_user != nil && !current_user.is_administrator)
+	        log_in @user
+	        flash[:success] = "Usuário criado com sucesso!"
+	        redirect_to @user
+    	elsif @user.save && current_user != nil && current_user.is_administrator
+	        flash[:success] = "Administrador criado com sucesso!"
+	        redirect_to users_url
+	    else
+	      render 'new'
+    	end
+  	end
 
     def edit
         @user = User.find(params[:id])

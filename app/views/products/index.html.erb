@@ -6,30 +6,14 @@
   <%= tag(:br) %> 
 
   <center>
-    <div class="row">
+     <div class="row">
       <%= render 'carrousel' %>
       <%= render 'search' %>
 
       <% cont = 0 %>
-<<<<<<< HEAD
-      
       <% if @products.size > 0 %>
         <% @products.each do |product| %>
           <%= render "product_row", product: product, order_item: @order_item %>
-            <div class="col-sm-3 col-lg-3 col-md-3">
-              <div class="thumbnail">
-                <%= image_tag "padrao.jpg", class: "img"%>
-                  <div class="caption">
-                    <h4 class="pull-right"> <%= "R$ #{format("%.2f", product.price)}" %> </h4>
-                    <h4> 
-                      <%= link_to product_path(product) do %> 
-                        <%= product.title %>
-                      <% end %>
-                    </h4>
-                  </div>
-              </div>
-            </div>
-
         <% end %>
       <% else %>
         <%= tag(:br) %>
@@ -37,7 +21,6 @@
           <h2> <%=  "Desculpe, produto não encontrado" %> </h2>
         </div>
       <% end %>
-      
     </div>
   </center>
   

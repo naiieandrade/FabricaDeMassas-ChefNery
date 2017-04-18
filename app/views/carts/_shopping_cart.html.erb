@@ -9,10 +9,13 @@
 <% end %>
 <% if @order_items.size == 0 %>
   <p class="text-center">
-    There are no items in your shopping cart.  Please <%= link_to "go back", root_path %> and add some items to your cart.
+    Não há itens no seu carrinho de compras. Por favor volte para a página de <%= link_to "produtos", products_path %> e adicione items ao seu carrinho.
   </p>
 <% else %>
   <% @order_items.each do |order_item| %>
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
+
+	<%= render 'orders/form_order' %>
+
 <% end %>
