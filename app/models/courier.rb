@@ -1,3 +1,4 @@
 class Courier < ActiveRecord::Base
-	has_one :order
+	has_many :order
+	enum status: {livre: 0, entregando: 1}
 end

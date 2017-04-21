@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20170422220322) do
   create_table "couriers", force: :cascade do |t|
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -70,8 +71,8 @@ ActiveRecord::Schema.define(version: 20170422220322) do
     t.datetime "updated_at",        null: false
     t.decimal  "subtotal"
     t.integer  "user_id"
-    t.integer  "order_status_id"
     t.integer  "courier_id"
+    t.integer  "order_status_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"

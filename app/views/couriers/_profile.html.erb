@@ -1,0 +1,37 @@
+<div class="container">    
+    <div class="jumbotron">
+      <div class="row">
+          <div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">
+              <center>
+                <img src="https://www.svgimages.com/svg-image/s5/man-passportsize-silhouette-icon-256x256.png" alt="stack photo" class="img">
+              </center>
+          </div>
+          <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">
+              <div class="container" style="border-bottom:1px solid black">
+                <h2><%= courier.name %></h2>
+              </div>
+                <hr>
+              <ul class="container details">
+                <li><p><span class="glyphicon glyphicon-earphone one" style="width:50px;"></span><%= courier.phone %></p></li>
+                <li>
+                  <p>
+                    <div class="span2" >
+                      <div class="btn-group">
+                        <a class="btn dropdown-toggle btn-info" data-toggle="dropdown" href="#">
+                          <%= courier.status %> 
+                          <span class="icon-cog icon-white"></span><span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#"><span class="icon-wrench"></span> Modify</a></li>
+                        </ul>
+                      </div>
+                    </div>                 
+                  </p>
+                </li>
+                <% for order in List_all_orders_from(courier) %>
+                  <li><p><%= order %></p></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
