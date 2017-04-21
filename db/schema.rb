@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170422220322) do
     t.decimal  "subtotal"
     t.integer  "user_id"
     t.integer  "order_status_id"
+    t.integer  "courier_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
