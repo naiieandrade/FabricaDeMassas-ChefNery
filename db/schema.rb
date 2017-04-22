@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170415055447) do
+ActiveRecord::Schema.define(version: 20170422220322) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -49,6 +49,12 @@ ActiveRecord::Schema.define(version: 20170415055447) do
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id"
   add_index "order_items", ["product_id"], name: "index_order_items_on_product_id"
 
+  create_table "order_statuses", force: :cascade do |t|
+    t.string   "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "orders", force: :cascade do |t|
     t.text     "shippment_address"
     t.float    "amount"
@@ -57,7 +63,10 @@ ActiveRecord::Schema.define(version: 20170415055447) do
     t.datetime "updated_at",        null: false
     t.decimal  "subtotal"
     t.integer  "user_id"
+    t.integer  "order_status_id"
   end
+
+  add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
   create_table "products", force: :cascade do |t|
     t.string   "title"

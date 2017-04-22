@@ -14,6 +14,9 @@ class OrdersController < ApplicationController
 		@order = Order.create(order_params)
 		@order.order_items = current_order.order_items
 		@order.user = current_user
+    order_status = OrderStatus.find(1)
+    puts order_status.id
+    @order.order_status = order_status
 		if @order.save
 			
 			current_order.order_items.each do |order_item|
