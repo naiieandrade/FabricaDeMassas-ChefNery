@@ -25,11 +25,10 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
-    @review.user_id = current_user.id
-    
+    @review.user_id = 
+
     if @review.save
       redirect_to @review, notice: 'Review was successfully created.'
-
     else
       render :new 
     end
@@ -65,9 +64,9 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
-    def set_user
-      @user = Us
-    end
+    # def set_user
+    #   @user = Us
+    # end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
