@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :products
   resources :orders
-
+  
   root "home#index"
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
