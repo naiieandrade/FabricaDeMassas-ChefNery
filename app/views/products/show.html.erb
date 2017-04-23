@@ -37,6 +37,12 @@
     <%= link_to 'Back', products_path %> 
   </p>
 
+  <div class="star-rating" data-score= <%= @avg_review %> ></div>
+  <em><%= "#{@reviews.length} reviews" %></em>
+
+
+  <%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-danger" %>
+
   <% if @reviews.blank? %>
     <h3>No reviews just yet, would you like to add the first!</h3>
     <%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-danger" %>
@@ -46,12 +52,20 @@
         <strong>
           <%= review.user.name %>
         </strong>
-        <div class="star-rating" data-score= <%= review.rating %> ></div>
+         <div class="star-rating" data-score= <%= review.rating %> ></div>        
         <p><%= review.comment %></p>
 
       </div>
     <% end %>
   <% end %>
-  
 
+  <script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+  </script>
 <% end -%>
