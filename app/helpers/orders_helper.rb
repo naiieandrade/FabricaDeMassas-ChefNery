@@ -17,13 +17,8 @@ module OrdersHelper
 		@current_order = nil
 	end
 
-	#def set_current_order
-	#	@order = Order.create
-	#	set_session_order(@order)
-	#	current_order
-	#	current_order.user = current_user
-	#	order_status = OrderStatus.find(1)
-	#	current_order.order_status = order_status
-	#	current_order.save!
-	#end
+	def change_order_status
+		@order = Order.find(params[:id])
+		last_status = @order.order_status
+	end
 end

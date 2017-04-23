@@ -1,6 +1,8 @@
 <% if !@orders.blank? %>
 	<% @orders.each do |order| %>
-
+			<%# options = options_from_collection_for_select(@order_status, 'id', 'description') %>
+			<%#= @order_status.select :description,  options %>
+		<%#= order.select :order_status_id, options_for_select(OrderStatus.all.collect {|c| [c.description, c.id]}), { :include_blank => "Please select category"}%>
 		<div class="thumbnail">
 			Pedido nº: 
 			<%= order.id %>
@@ -21,7 +23,10 @@
 
 			Endereço de entrega: 
 			<%= order.shippment_address %>
-		<%= button_to 'Excluir',  order,  method: :delete, data: { confirm: 'Tem certeza que deseja excluir o pedido?' }, class: 'btn btn-danger'  %>
+			<%=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] })%>
+			<%#= button_to 'Atualizar', order, method: :update, class 'btn btn-danger' %>
+				<%#= select_tag "description", options_from_collection_for_select(@order_status, "id", "description"), %>
+			<%= button_to 'Excluir',  order,  method: :delete, data: { confirm: 'Tem certeza que deseja excluir o pedido?' }, class: 'btn btn-danger'  %>
 		</div>
 	<% end %>
 <% end %>

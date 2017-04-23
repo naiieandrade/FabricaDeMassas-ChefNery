@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   def index
-		@orders = Order.all
+  	@order_status = OrderStatus.all
+	@orders = Order.all
   end
 
 	def show
