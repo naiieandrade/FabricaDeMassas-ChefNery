@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_product
   
   # GET /reviews
   # GET /reviews.json
@@ -26,9 +27,10 @@ class ReviewsController < ApplicationController
   def create
     current_user
     @review = @current_user.reviews.new(review_params)
+    @review.product_id = @product.id
 
     if @review.save
-      redirect_to @review, notice: 'Review was successfully created.'
+      redirect_to @product, notice: 'Review was successfully created.'
     else
       render :new 
     end
@@ -64,9 +66,9 @@ class ReviewsController < ApplicationController
       @review = Review.find(params[:id])
     end
 
-    # def set_user
-    #   @user = Us
-    # end
+    def set_product
+      @product = Product.find(params[:product_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params

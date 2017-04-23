@@ -32,7 +32,26 @@
     </ul>
   </p>
 
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Back', products_path %>
+  <p>
+    <%= link_to 'Edit', edit_product_path(@product) %> |
+    <%= link_to 'Back', products_path %> 
+  </p>
+
+  <% if @reviews.blank? %>
+    <h3>No reviews just yet, would you like to add the first!</h3>
+    <%= link_to "Write Review", new_product_review_path(@product), class: "btn btn-danger" %>
+  <% else %>
+    <% @reviews.each do |review| %>
+      <div class="reviews">
+        <strong>
+          <%= review.user.name %>
+        </strong>
+        <div class="star-rating" data-score= <%= review.rating %> ></div>
+        <p><%= review.comment %></p>
+
+      </div>
+    <% end %>
+  <% end %>
+  
 
 <% end -%>

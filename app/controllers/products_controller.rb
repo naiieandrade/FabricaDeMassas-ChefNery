@@ -9,7 +9,8 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-  end
+     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+ end
 
   # GET /products/new
   def new

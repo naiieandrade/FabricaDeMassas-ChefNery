@@ -1,19 +1,23 @@
 Rails.application.routes.draw do
-  resources :reviews
+  
   get 'sessions/new'
 
   get 'users/new'
 
   resources :ingredients
-  resources :products
+  
+  resources :products do 
+    resources :reviews, except: [:show, :index]
+  end  
+  
   resources :users
 
   get 'orders/show'
   get 'orders/new'
 
-  resources :ingredients
-  resources :products
-  resources :orders
+  # resources :ingredients
+  # resources :products
+  # resources :orders
   
   root "home#index"
   get    '/login',   to: 'sessions#new'
@@ -26,4 +30,5 @@ Rails.application.routes.draw do
   get 'home/contact'
 
   get "home" => "home#index"
+
 end

@@ -10,5 +10,16 @@
   <%= @review.comment %>
 </p>
 
+<p>
+  <strong>User:</strong>
+  	<%= @review.user.name %>
+</p>
+
+<p> 
+  <strong>Email:</strong>
+  	<%= @review.user.email %>
+</p>
+
+
 <%= link_to 'Edit', edit_review_path(@review) %> |
 <%= link_to 'Back', reviews_path %>
