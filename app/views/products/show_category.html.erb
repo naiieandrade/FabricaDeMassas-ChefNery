@@ -1,16 +1,11 @@
 <%= content_tag :div, :class => "container" do -%>
 
-    <h1>Categoria</h1>
-
-    <%= render 'form' %>
+  <h1></h1>
 
   <% @products.each do |product| %>
-    <% if product.category ==  'Culinária Italiana' %>
-      <%= render "product_row", product: product, order_item: @order_item %>
-    <% end %>
+  	<%= render "product_row", product: product, order_item: @order_item %>
   <% end %>
 
-
-    <%= link_to 'Back', products_path %>
+   <%= link_to 'Back', products_path %>
 
 <% end %>

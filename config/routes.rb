@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   
   get 'users/new'
 
+	get 'products/show_category', to: 'products#show_category'
+
+	get 'products/italian_culinary', to: 'products#italian_culinary'
+
   resources :ingredients
   resources :products
   resources :users
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
   get 'orders/new'
 
   resources :ingredients
-  resources :products
+  #resources :products
   resources :orders
 
   root "home#index"

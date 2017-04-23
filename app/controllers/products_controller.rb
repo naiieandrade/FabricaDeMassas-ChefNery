@@ -49,6 +49,16 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
 
+	def italian_culinary
+		#@products = Product.all.where(:category => 'Culinária Italiana')
+		redirect_to action: 'show_category', category_desc: 'Culinária Italiana'
+	end
+
+	def show_category
+		@products = Product.all.where(:category => @category_desc)
+ 		@order_item = current_order.order_items.new
+	end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
