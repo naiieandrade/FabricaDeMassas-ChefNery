@@ -20,12 +20,18 @@
 					<%= tag(:br) %>
 				<% end %>
 			<% end %>
-
 			Endereço de entrega: 
 			<%= order.shippment_address %>
-			<%=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] })%>
-			<%#= button_to 'Atualizar', order, method: :update, class 'btn btn-danger' %>
-				<%#= select_tag "description", options_from_collection_for_select(@order_status, "id", "description"), %>
+			<%#=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] }, :selected => params[:order_status_id])%>
+
+			<%= form_tag url_for(:controller => 'orders', :action => 'update_status'), :method => 'post' do %>
+			  <%= select_tag 'order_status_id', options_from_collection_for_select(@order_status, :id, :description) %>
+			  <%= hidden_field_tag :order_id, order.id %>
+			  <%= submit_tag "Atualizar", id_order: order.id, class: 'btn' %>
+			<% end %> 
+
+			<%#= button_to 'Atualizar', orders_path, {:method => :update} %>
+			
 			<%= button_to 'Excluir',  order,  method: :delete, data: { confirm: 'Tem certeza que deseja excluir o pedido?' }, class: 'btn btn-danger'  %>
 		</div>
 	<% end %>

@@ -38,6 +38,14 @@ class OrdersController < ApplicationController
         end
     end
 
+    def update_status
+    	@order = Order.find(params[:order_id])
+    	@order_status = OrderStatus.find(params[:order_status_id])
+    	@order.order_status = @order_status
+		@order.save!
+		redirect_to root_path
+    end
+
 	def destroy
 		@order = Order.find params[:id]
 		@order.destroy
@@ -47,7 +55,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:shippment_address)
+			params.require(:order).permit!
 		end
 
 end

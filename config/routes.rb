@@ -22,6 +22,12 @@ Rails.application.routes.draw do
   resources :ingredients
   resources :products
   resources :orders
+  resources :orders do
+  collection do
+    post :update_status, :as => :update_status
+  end   
+  end
+  #match "update_status" => "orders#update_status", :as => "update_status"
 
   root "home#index"
   get    '/login',   to: 'sessions#new'

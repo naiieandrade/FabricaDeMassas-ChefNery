@@ -19,6 +19,8 @@ module OrdersHelper
 
 	def change_order_status
 		@order = Order.find(params[:id])
+		@order.order_status = OrderStatus.find(params[:order_status_id])
 		last_status = @order.order_status
+
 	end
 end
