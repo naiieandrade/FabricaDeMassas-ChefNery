@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     end
 
     def create
-	    @user = User.new(user_params)    # Not the final implementation!
+	    @user = User.new(user_params)  
 	    if @user.save ||     (current_user != nil && !current_user.is_administrator)
 	        log_in @user
 	        flash[:success] = "Usuário criado com sucesso!"

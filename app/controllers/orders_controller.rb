@@ -11,26 +11,31 @@ class OrdersController < ApplicationController
   end
 
 	def create
-		@order = Order.create(order_params)
-		@order.order_items = current_order.order_items
-		@order.user = current_user
-    order_status = OrderStatus.find(1)
-    puts order_status.id
-    @order.order_status = order_status
-		if @order.save
-			
-			current_order.order_items.each do |order_item|
-				order_item.destroy
-			end
-
-			flash[:success] = "Pedido realizado com sucesso"
-			redirect_to root_path
+		@order = Order.create
+		set_session_order(@order)
+		current_order
+		current_order.user = current_user
+		order_status = OrderStatus.find(1)
+		current_order.order_status = order_status
+		if current_order.save
+			#flash[:success] = "Pedido realizado com sucesso"
+			redirect_to '/products'
 		
 		else
 			flash[:error] = "Ocorreu um erro, tente novamente"
 			render :new	
 		end
 	end
+
+	def update
+        if current_order.update(order_params)
+            flash[:success] = "Pedido atualizado"
+            redirect_to root_path
+            destroy_session_order
+        else
+          render 'edit'
+        end
+    end
 
 	def destroy
 		@order = Order.find params[:id]

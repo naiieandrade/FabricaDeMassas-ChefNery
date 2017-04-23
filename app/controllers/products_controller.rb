@@ -4,9 +4,10 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    #@products = Product.all
+    #set_current_order
     @products = Product.search(params[:find])
     @order_item = current_order.order_items.new
+    
   end
 
   # GET /products/1
