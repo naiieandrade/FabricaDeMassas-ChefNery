@@ -1,5 +1,5 @@
 module ApplicationHelper
-	
+
 	def getImages
 		images = []
 
@@ -18,5 +18,3 @@ module ApplicationHelper
 		info << ["Massas Árabes", "Some text", "Veja os Produtos Árabes", "compass"]
 	end
 end
-
-

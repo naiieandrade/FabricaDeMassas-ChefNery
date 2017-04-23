@@ -66,8 +66,12 @@ class ProductsController < ApplicationController
   end
 
   def show_category
-  	@products = Product.all.where(:category => params[:category_desc])
-  	@order_item = current_order.order_items.new
+		if params[:category_desc] != nil
+	  	@products = Product.all.where(:category => params[:category_desc])
+  		@order_item = current_order.order_items.new
+		else
+			redirect_to root_path
+		end
   end
 
   private

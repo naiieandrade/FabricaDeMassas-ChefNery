@@ -4,32 +4,33 @@
             Bem-Vindos a Fábrica de Massas do Chef Nery!
         </h1>
     </div>
-    
+
 
 <% (0..2).each do |index| %>
-    <div class="col-md-4"> 
+    <div class="col-md-4">
         <%= content_tag(:div, class: ["panel","panel-default"]) do %>
-            
-            <%= content_tag(:div, class: "panel-heading")  do %> 
-            
+
+            <%= content_tag(:div, class: "panel-heading")  do %>
+
             <h4>
                 <%= content_tag(:i, "",class: ["fa", "fa-fw", "fa-" + getPanelInfo()[index][3]])%>
                 <%= getPanelInfo()[index][0] %>
             </h4>
-            <% end %>   
-            
-            <%= content_tag(:div, class: "panel-body")  do %> 
+            <% end %>
+
+            <%= content_tag(:div, class: "panel-body")  do %>
                 <%= content_tag(:p, getPanelInfo()[index][1]) %>
             <% end %>
-            
-            <%= link_to(getPanelInfo()[index][2], root_path) %>
-       
+
+            <% case index %>
+              <% when 0 %>
+                <%= link_to(getPanelInfo()[index][2], products_italian_culinary_path) %>
+              <% when 1 %>
+                <%= link_to(getPanelInfo()[index][2],  products_oriental_culinary_path) %>
+              <% else %>
+                <%= link_to(getPanelInfo()[index][2],  products_arabic_culinary_path) %>
+              <% end %>
+
         <% end %>
     </div>
-<% end %>         
-
-        
-    
-
-
-     
+<% end %>
