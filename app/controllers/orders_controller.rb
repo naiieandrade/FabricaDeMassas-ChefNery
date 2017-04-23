@@ -31,7 +31,7 @@ class OrdersController < ApplicationController
 	def update
         if current_order.update(order_params)
             flash[:success] = "Pedido atualizado"
-            redirect_to root_path
+            redirect_to orders_path
             destroy_session_order
         else
           render 'edit'
@@ -42,8 +42,8 @@ class OrdersController < ApplicationController
     	@order = Order.find(params[:order_id])
     	@order_status = OrderStatus.find(params[:order_status_id])
     	@order.order_status = @order_status
-		@order.save!
-		redirect_to root_path
+  		@order.save!
+  		redirect_to orders_path
     end
 
 	def destroy

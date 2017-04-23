@@ -1,0 +1,31 @@
+<div class="container" >
+<h4>Histórico de pedidos da minha conta</h4>
+<% if !@orders.blank? %>
+	<% @orders.each do |order| %>
+		<% if order.user_id == current_user.id %>
+			<div class="thumbnail">
+				Pedido nº: 
+				<%= order.id %>
+				<%= tag(:br) %>
+				Cliente:
+				<%= link_to user_path(order.user) do %>
+					<%= order.user.name %>
+				<% end %> 
+				<%= tag (:br) %>
+				Produtos:
+				<% order.order_items.each do |order_item| %>
+					<%= link_to product_path(order_item.product) do %>
+						<%= "#{order_item.product.title }" %>
+					<% end %>
+				<% end %>
+				<%= tag(:br) %>
+				Endereço de entrega: 
+				<%= order.shippment_address %>
+				<%= tag(:br) %>
+				<%#=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] }, :selected => params[:order_status_id])%>
+				Status: <%= order.order_status.description%>
+			</div>
+		<% end %>
+	<% end %>
+<% end %>
+</div>
