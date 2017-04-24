@@ -1,0 +1,15 @@
+OrderEmail#order_request
+
+<%= @greeting %>, 
+Novo pedido efetuado
+
+Usuário: <%= @user.name %>
+Produtos:
+<% @order.order_items.each do |order_item| %>
+	<%= link_to product_path(order_item.product) do %>
+		<%= "#{order_item.product.title} " %>
+	<% end %>
+<% end %>
+Endereço de entrega: <%= @order.shippment_address %> 
+
+O usuário está aguardando resposta.
