@@ -1,0 +1,9 @@
+<% cont = 0 %>
+<% @orders_navbar = get_orders %>
+<% @orders_navbar.each do |order| %>
+  <% if order.order_status.id == 1 %>
+    <% cont += 1 %>
+  <% end %>
+<% end %>
+
+<%= link_to cont, orders_path %>

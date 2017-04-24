@@ -17,6 +17,11 @@ module ApplicationHelper
 		info << ["Massas Orientais", "Some text", "Veja os Produtos Orientais", "gift"]
 		info << ["Massas Árabes", "Some text", "Veja os Produtos Árabes", "compass"]
 	end
+
+
+	def get_orders
+		@orders_navbar = Order.all
+	end
 end
 
 

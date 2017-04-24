@@ -1,6 +1,7 @@
 <% if logged_in? and is_administrator(current_user) %>
 	<%= render "admin_view" %>
-
+	
+ 
 <% elsif logged_in? and !is_administrator(current_user)%>
 	<%= render "user_view" %>
 <% end %>

@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
 	belongs_to :user
 	has_many :order_items
-  belongs_to :order_status
+  	belongs_to :order_status
 	#validates :shippment_address, presence: true
 
 	def subtotal
