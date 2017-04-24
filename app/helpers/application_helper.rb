@@ -19,7 +19,7 @@ module ApplicationHelper
 	end
 
 	def count_pending_orders
-		@order = Order.all
+		@orders = Order.all
 		cont = 0
 			@orders.each do |order|
 				if order.order_status_id == 1
