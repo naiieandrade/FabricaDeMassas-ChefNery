@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   def index
   	@order_status = OrderStatus.all
 	@orders = Order.all
+
+	if logged_in? and is_administrator(current_user)
+		@orders = sort_orders
+	end
   end
 
 	def show
@@ -43,6 +47,7 @@ class OrdersController < ApplicationController
     	@order_status = OrderStatus.find(params[:order_status_id])
     	@order.order_status = @order_status
   		@order.save!
+  		flash[:success] = "Pedido atualizado"
   		redirect_to orders_path
     end
 

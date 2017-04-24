@@ -26,7 +26,7 @@
 			<%#=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] }, :selected => params[:order_status_id])%>
 
 			<%= form_tag url_for(:controller => 'orders', :action => 'update_status'), :method => 'post' do %>
-			  <%= select_tag 'order_status_id', options_from_collection_for_select(@order_status, :id, :description, order.order_status.id) %>
+			  Status: <%= select_tag 'order_status_id', options_from_collection_for_select(@order_status, :id, :description, order.order_status.id) %>
 			  <%= hidden_field_tag :order_id, order.id %>
 			  <%= submit_tag "Atualizar", id_order: order.id, class: 'btn btn-success' %>
 			<% end %> 

@@ -1,9 +1,7 @@
-<% cont = 0 %>
-<% @orders_navbar = get_orders %>
-<% @orders_navbar.each do |order| %>
-  <% if order.order_status.id == 1 %>
-    <% cont += 1 %>
-  <% end %>
-<% end %>
+<% cont = count_pending_orders %>
 
-<%= link_to cont, orders_path %>
+<% if cont != 1 %>
+	<%= link_to "#{cont} pedidos pendentes", orders_path, remote: true  %>
+<% else %>
+	<%= link_to "#{cont} pedido pendente", orders_path, remote: true %>
+<% end %>

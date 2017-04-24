@@ -23,4 +23,11 @@ module OrdersHelper
 		last_status = @order.order_status
 
 	end
+
+	def sort_orders
+		orders = Order.all
+		orders.order(:order_status_id)
+	end
+
+
 end
