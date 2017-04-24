@@ -10,12 +10,34 @@ ingredients = Ingredient.create([
   ])
 
 products = Product.create([
-    {title: 'Lasanha', description: "Deliciosa lasanha com molhos vermelho e branco",
-      category: "Culinária Italiana", price: 25,
+    {title: 'Corniccione',
+      description: "Delicioso Corniccione",
+      category: "Culinária Italiana",
+      price: 25,
+      :ingredients => Ingredient.where(:title => ['Ovos', 'Queijo'])},
+    {title: 'Lasanha',
+      description: "Deliciosa lasanha com molhos vermelho e branco",
+      category: "Culinária Italiana",
+      price: 25,
       :ingredients => Ingredient.where(:title => ['Farinha', 'Molho', 'Ovos', 'Carne Moída', 'Presunto', 'Queijo'])},
-    {title: 'Escondidinho', description: "Delicioso escondidinho",
-      category: "Culinária Brasileira", price: 25,
-      :ingredients => Ingredient.where(:title => ['Ovos', 'Carnde de Sol', 'Mandioca' 'Queijo'])}
-    ])
+    {title: 'Escondidinho',
+      description: "Delicioso escondidinho",
+      category: "Culinária Brasileira",
+      price: 25,
+      :ingredients => Ingredient.where(:title => ['Ovos', 'Carne de Sol', 'Mandioca' 'Queijo'])},
+
+    {title: 'Pão Chines',
+      description: "Delicioso Pão Chines",
+      category: "Culinária Oriental",
+      price: 25,
+      :ingredients => Ingredient.where(:title => ['Ovos', 'Farinha'])},
+
+    {title: 'Pão Italiano',
+      description: "Delicioso Pão Italiano",
+      category: "Culinária Italiana",
+      price: 25,
+      :ingredients => Ingredient.where(:title => ['Ovos', 'Farinha'])}
+
+    ]),
 
 admin = User.create(name: "admin", email:"admin@admin.com", password:"123456", is_administrator: true)

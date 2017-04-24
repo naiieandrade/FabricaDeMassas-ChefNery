@@ -49,6 +49,31 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
 
+  def italian_culinary
+      redirect_to :controller => 'products', :action => 'show_category', :category_desc => 0
+  end
+
+  def oriental_culinary
+    redirect_to :controller => 'products', :action => 'show_category', :category_desc => 1
+  end
+
+  def arabic_culinary
+    redirect_to :controller => 'products', :action => 'show_category', :category_desc => 2
+  end
+
+  def brazilian_culinary
+    redirect_to :controller => 'products', :action => 'show_category', :category_desc => 3
+  end
+
+  def show_category
+		if params[:category_desc] != nil
+	  	@products = Product.all.where(:category => params[:category_desc])
+  		@order_item = current_order.order_items.new
+		else
+			redirect_to root_path
+		end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -60,3 +85,4 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []})
     end
 end
+

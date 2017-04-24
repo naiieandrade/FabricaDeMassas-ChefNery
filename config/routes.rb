@@ -8,8 +8,15 @@ Rails.application.routes.draw do
   get 'order_items/destroy'
 
   get 'sessions/new'
-  
+
   get 'users/new'
+
+  get 'products/show_category', to: 'products#show_category'
+
+  get 'products/italian_culinary', to: 'products#italian_culinary'
+  get 'products/oriental_culinary', to: 'products#oriental_culinary'
+  get 'products/arabic_culinary', to: 'products#arabic_culinary'
+  get 'products/brazilian_culinary', to: 'products#brazilian_culinary'
 
   resources :ingredients
   resources :products
@@ -20,7 +27,7 @@ Rails.application.routes.draw do
   get 'orders/new'
 
   resources :ingredients
-  resources :products
+  #resources :products
   resources :orders
 
   root "home#index"
