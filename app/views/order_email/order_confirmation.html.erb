@@ -1,0 +1,17 @@
+<%= @greeting %> <%= @user.name %>,
+<%= tag(:br) %>
+
+<b>O seu pedido foi efetuado</b>
+
+<%= tag(:br) %>
+Produtos encomendados:
+<% @order.order_items.each do |order_item| %>
+	<%= "#{order_item.product.title} " %>
+<% end %>
+<%= tag(:br) %>
+
+Endereço de entrega: <%= @order.shippment_address %>
+
+<%= tag(:br) %>
+
+<b> O chefe logo responderá sua encomenda. </b>

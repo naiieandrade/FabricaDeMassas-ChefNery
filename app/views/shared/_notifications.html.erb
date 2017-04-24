@@ -1,0 +1,7 @@
+<% cont = count_pending_orders %>
+
+<% if cont != 1 %>
+	<%= link_to "#{cont} pedidos pendentes", orders_path %>
+<% else %>
+	<%= link_to "#{cont} pedido pendente", orders_path %>
+<% end %>

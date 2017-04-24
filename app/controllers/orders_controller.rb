@@ -1,6 +1,11 @@
 class OrdersController < ApplicationController
   def index
-		@orders = Order.all
+  	@order_status = OrderStatus.all
+	@orders = Order.all
+
+	if logged_in? and is_administrator(current_user)
+		@orders = sort_orders
+	end
   end
 
 	def show
@@ -11,23 +16,43 @@ class OrdersController < ApplicationController
   end
 
 	def create
-		@order = Order.create(order_params)
-		@order.order_items = current_order.order_items
-		@order.user = current_user
-		if @order.save
-			
-			current_order.order_items.each do |order_item|
-				order_item.destroy
-			end
-
-			flash[:success] = "Pedido realizado com sucesso"
-			redirect_to root_path
+		@order = Order.create
+		set_session_order(@order)
+		current_order
+		current_order.user = current_user
+		order_status = OrderStatus.find(1)
+		current_order.order_status = order_status
+		if current_order.save
+			#flash[:success] = "Pedido realizado com sucesso"
+			redirect_to '/products'
 		
 		else
 			flash[:error] = "Ocorreu um erro, tente novamente"
 			render :new	
 		end
 	end
+
+	def update
+        if current_order.update(order_params)
+            flash[:success] = "Pedido atualizado"
+            redirect_to orders_path
+            # send email
+            OrderEmail.order_request(current_user, current_order).deliver
+            OrderEmail.order_confirmation(current_user, current_order).deliver
+            destroy_session_order
+        else
+          render 'edit'
+        end
+    end
+
+    def update_status
+    	@order = Order.find(params[:order_id])
+    	@order_status = OrderStatus.find(params[:order_status_id])
+    	@order.order_status = @order_status
+  		@order.save!
+  		flash[:success] = "Pedido atualizado"
+  		redirect_to orders_path
+    end
 
 	def destroy
 		@order = Order.find params[:id]
@@ -38,7 +63,7 @@ class OrdersController < ApplicationController
 	private
 
 		def order_params
-			params.require(:order).permit(:shippment_address)
+			params.require(:order).permit!
 		end
 
 end

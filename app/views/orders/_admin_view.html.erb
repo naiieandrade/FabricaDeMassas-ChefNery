@@ -1,0 +1,40 @@
+<div class="container">
+<% if !@orders.blank? %>
+	<% @orders.each do |order| %>
+			<%# options = options_from_collection_for_select(@order_status, 'id', 'description') %>
+			<%#= @order_status.select :description,  options %>
+		<%#= order.select :order_status_id, options_for_select(OrderStatus.all.collect {|c| [c.description, c.id]}), { :include_blank => "Please select category"}%>
+		<div class="thumbnail">
+			Pedido nº: 
+			<%= order.id %>
+			<%= tag(:br) %>
+			Cliente:
+			<%= link_to user_path(order.user) do %>
+				<%= order.user.name %>
+			<% end %> 
+			<%= tag (:br) %>
+			Produtos:
+			<%= tag(:br) %>
+			<% order.order_items.each do |order_item| %>
+				<%= link_to product_path(order_item.product) do %>
+					<%= order_item.product.title %>
+					<%= tag(:br) %>
+				<% end %>
+			<% end %>
+			Endereço de entrega: 
+			<%= order.shippment_address %>
+			<%#=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] }, :selected => params[:order_status_id])%>
+
+			<%= form_tag url_for(:controller => 'orders', :action => 'update_status'), :method => 'post' do %>
+			  Status: <%= select_tag 'order_status_id', options_from_collection_for_select(@order_status, :id, :description, order.order_status.id) %>
+			  <%= hidden_field_tag :order_id, order.id %>
+			  <%= submit_tag "Atualizar", id_order: order.id, class: 'btn btn-success' %>
+			<% end %> 
+
+			<%#= button_to 'Atualizar', orders_path, {:method => :update} %>
+			
+			<%= button_to 'Excluir',  order,  method: :delete, data: { confirm: 'Tem certeza que deseja excluir o pedido?' }, class: 'btn btn-danger'  %>
+		</div>
+	<% end %>
+<% end %>
+</div>

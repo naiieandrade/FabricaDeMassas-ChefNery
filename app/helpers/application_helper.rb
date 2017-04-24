@@ -17,4 +17,15 @@ module ApplicationHelper
 		info << ["Massas Orientais", "Some text", "Veja os Produtos Orientais", "gift"]
 		info << ["Massas Árabes", "Some text", "Veja os Produtos Árabes", "compass"]
 	end
+
+	def count_pending_orders
+		@orders = Order.all
+		cont = 0
+			@orders.each do |order|
+				if order.order_status_id == 1
+					cont += 1
+				end
+			end
+		cont
+	end
 end

@@ -41,3 +41,8 @@ products = Product.create([
     ]),
 
 admin = User.create(name: "admin", email:"admin@admin.com", password:"123456", is_administrator: true)
+
+OrderStatus.delete_all
+OrderStatus.create! id: 1, description: "Em progresso"
+OrderStatus.create! id: 2, description: "Aceito"
+OrderStatus.create! id: 3, description: "Cancelado"

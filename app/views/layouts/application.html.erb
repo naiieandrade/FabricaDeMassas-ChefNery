@@ -56,8 +56,10 @@
                       <%= link_to 'Contato', home_contact_path %>
                   </li>
 
-				  <% if logged_in? %>
+				  <% if logged_in? && current_order? %>
 			         <li><%= render 'layouts/cart_text' %></li>
+          <%elsif logged_in? && !current_order? %>
+                <li><%= link_to "Criar novo pedido", { :controller => :orders, :action => :create }, :method => :post %></li>
 				  <% end %>
 
                   <li class="dropdown">
@@ -79,7 +81,7 @@
                       </ul>
                   </li>
                   <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Entrar <b class="caret"></b></a>
+                      <%= render 'layouts/user_logged' %>
                       <ul class="dropdown-menu">
                           <li>
                               <% if logged_in? %>
@@ -90,7 +92,7 @@
                                 <li><%= link_to "Perfil", current_user %></li>
                                 <li><%= link_to "Atualizar Perfil", edit_user_path(current_user) %></li>
                                 <li><%= link_to "Sair", logout_path, method: "delete" %></li>
-			                    <li><%= render 'layouts/cart_text' %></li>
+			                    <li><%#= render 'layouts/cart_text' %></li>
                                 <li><%= link_to "All Users", users_path %></li>
                                 <li><%= link_to "Profile", current_user %></li>
                                 <li><%= link_to "Update", edit_user_path(current_user) %></li>
@@ -102,6 +104,9 @@
                           </li>
                       </ul>
                   </li>
+                  <% if logged_in? && is_administrator(current_user) %>       
+                    <li> <%= render "shared/notifications" %> </li>
+                  <% end %>
               </ul>
           </div>
       </div>

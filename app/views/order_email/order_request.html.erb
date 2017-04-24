@@ -1,0 +1,19 @@
+<%= @greeting %>,
+<%= tag(:br) %>
+
+<b>Novo pedido efetuado</b>
+<%= tag(:br) %>
+Usuário: <%= @user.name %>
+<%= tag(:br) %>
+E-mail do usuário: <%= @user.email %>
+<%= tag(:br) %>
+Produtos:
+<% @order.order_items.each do |order_item| %>
+	<%= "#{order_item.product.title} " %>
+<% end %>
+<%= tag(:br) %>
+Endereço de entrega: <%= @order.shippment_address %>
+
+<%= tag(:br) %>
+
+<b> O usuário está aguardando resposta. </b>

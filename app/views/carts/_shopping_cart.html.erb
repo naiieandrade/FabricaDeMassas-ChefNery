@@ -16,6 +16,11 @@
     <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
   <% end %>
 
-	<%= render 'orders/form_order' %>
+	<%= form_for current_order do |f| %>
+
+  <%= f.text_field :shippment_address, :placeholder => 'Endereço', class: 'form-control' %> <br />
+  <%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
+  <%= link_to "Adicionar mais produtos ao carrinho", products_path %>
+<% end %>
 
 <% end %>
