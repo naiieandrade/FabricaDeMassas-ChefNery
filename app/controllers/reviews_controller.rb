@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     @review.product_id = @product.id
 
     if @review.save
-      redirect_to @product, notice: 'Review was successfully created.'
+      redirect_to @product, notice: 'Sua avaliação foi registrada.'
     else
       render :new 
     end
@@ -41,7 +41,7 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @review, notice: 'Sua avaliação foi editada.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -55,7 +55,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to reviews_url, notice: 'Review was successfully destroyed.' }
+      format.html { redirect_to reviews_url, notice: 'Sua avalição foi deletada.' }
       format.json { head :no_content }
     end
   end
