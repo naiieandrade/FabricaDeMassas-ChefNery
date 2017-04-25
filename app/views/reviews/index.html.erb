@@ -16,9 +16,9 @@
       <tr>
         <td><%= review.rating %></td>
         <td><%= review.comment %></td>
-        <td><%= link_to 'Show', review %></td>
-        <td><%= link_to 'Edit', edit_review_path(review) %></td>
-        <td><%= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', review %></td>
+        <td><%= link_to 'Editar', edit_review_path(review) %></td>
+        <td><%= link_to 'Deletar', review, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Review', new_review_path %>
+<%= link_to 'Nova Avaliação', new_review_path %>
