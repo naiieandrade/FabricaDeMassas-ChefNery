@@ -30,5 +30,6 @@ Rails.application.routes.draw do
   get 'home/contact'
 
   get "home" => "home#index"
+  get "/review/:id/remove" => "review#destroy"
 
 end
