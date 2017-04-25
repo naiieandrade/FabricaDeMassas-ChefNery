@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20170422220322) do
   add_index "Orders_Products", ["order_id", "product_id"], name: "index_Orders_Products_on_order_id_and_product_id"
   add_index "Orders_Products", ["product_id", "order_id"], name: "index_Orders_Products_on_product_id_and_order_id"
 
+  create_table "couriers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "status",     default: 0
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
     t.float    "price"
@@ -63,6 +71,7 @@ ActiveRecord::Schema.define(version: 20170422220322) do
     t.datetime "updated_at",        null: false
     t.decimal  "subtotal"
     t.integer  "user_id"
+    t.integer  "courier_id"
     t.integer  "order_status_id"
   end
 

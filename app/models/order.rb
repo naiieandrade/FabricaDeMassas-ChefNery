@@ -1,5 +1,6 @@
 class Order < ActiveRecord::Base
 	belongs_to :user
+	belongs_to :courier
 	has_many :order_items
   	belongs_to :order_status
 	#validates :shippment_address, presence: true

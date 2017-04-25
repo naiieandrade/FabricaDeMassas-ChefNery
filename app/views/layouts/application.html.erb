@@ -106,6 +106,7 @@
                   </li>
                   <% if logged_in? && is_administrator(current_user) %>       
                     <li> <%= render "shared/notifications" %> </li>
+                    <%= link_to 'Entregadores', couriers_path %>
                   <% end %>
               </ul>
           </div>
