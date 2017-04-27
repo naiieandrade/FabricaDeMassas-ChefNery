@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     #set_current_order
     @products = Product.search(params[:find])
     # @order_item = current_order.order_items.new
-    
+
   end
 
   # GET /products/1
@@ -69,7 +69,6 @@ class ProductsController < ApplicationController
   def show_category
 		if params[:category_desc] != nil
 	  	@products = Product.all.where(:category => params[:category_desc])
-  		@order_item = current_order.order_items.new
 		else
 			redirect_to root_path
 		end

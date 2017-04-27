@@ -1,34 +1,22 @@
 <%= content_tag :div, :class => "container" do -%>
 
-
   <p id="notice"><%= notice %></p>
 
-  <center> <h1>Lista de Produtos</h1> </center>
-  <%= tag(:br) %> 
+  <%= content_tag :div, class: "row" do %>
 
-  <center>
-     <div class="row">
+    <%= render 'search' %>
 
-      <%= render 'search' %>
+    <% cont = 0 %>
 
-      <% cont = 0 %>
-      <% if @products.size > 0 %>
-        <% @products.each do |product| %>
-          <%= render "product_row", product: product, order_item: @order_item %>
-        <% end %>
-      <% else %>
-        <%= tag(:br) %>
-        <div class="">
-          <h2> <%=  "Desculpe, produto não encontrado" %> </h2>
-        </div>
+    <% if @products.size > 0 %>
+      <% @products.each do |product| %>
+        <%= render "product_row", product: product, order_item: @order_item %>
       <% end %>
-    </div>
-  </center>
-  
-  <% 2.times do %>
-    <%= tag(:br) %>
+    <% else %>
+      <%= content_tag :div do %>
+        <h2> <%=  "Produto não encontrado" %> </h2>
+      <% end %>
+    <% end %>
+
   <% end %>
-
-  <center> <%= link_to 'New Product', new_product_path %> </center>
-
 <% end -%>
