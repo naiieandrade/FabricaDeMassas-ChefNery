@@ -87,6 +87,15 @@ ActiveRecord::Schema.define(version: 20170422220322) do
     t.datetime "updated_at",  null: false
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "product_id"
+  end
+
   create_table "storages", force: :cascade do |t|
     t.integer  "product_unit"
     t.datetime "created_at",   null: false

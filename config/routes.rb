@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :couriers
   get 'carts/show'
 
@@ -20,15 +21,17 @@ Rails.application.routes.draw do
   get 'products/brazilian_culinary', to: 'products#brazilian_culinary'
 
   resources :ingredients
-  resources :products
+  
+  resources :products do 
+    resources :reviews, except: [:show, :index]
+  end  
+  
   resources :users
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
   get 'orders/show'
   get 'orders/new'
 
-  resources :ingredients
-  #resources :products
   resources :orders
   resources :orders do
   collection do
@@ -37,7 +40,8 @@ Rails.application.routes.draw do
   end
   #match "update_status" => "orders#update_status", :as => "update_status"
 
-  root "home#index"
+
+ root "home#index"
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
@@ -52,5 +56,6 @@ Rails.application.routes.draw do
   get "home" => "home#index"
 
   get 'products/index'
+  get "/review/:id/remove" => "review#destroy"
 
 end

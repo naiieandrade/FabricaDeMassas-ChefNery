@@ -32,7 +32,45 @@
     </ul>
   </p>
 
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-  <%= link_to 'Back', products_path %>
+  <p>
+    <%= link_to 'Editar Produto', edit_product_path(@product), class: "btn btn-warning"%>
+  </p>
 
+  <br>
+
+  <div class="star-rating" style= "text-align: center"data-score= <%= @avg_review %> ></div>
+  <center><em ><%= "#{@reviews.length} avaliações" %></em></center>
+
+<br>
+<br>
+
+ 
+<h3>Comentários:</h3>
+  <% if @reviews.blank? %>
+    <h3>Não temos avaliações. Adoraríamos que você fosse o primeiro!</h3>
+    <%= link_to "Avaliar", new_product_review_path(@product), class: "btn btn-primary" %>
+  <% else %>
+   
+    <% @reviews.each do |review| %>
+      <div class="reviews">
+        <strong>
+          <%= review.user.name %>
+        </strong>
+         <div class="star-rating" data-score= <%= review.rating %> ></div>        
+        <p><%= review.comment %></p>
+      </div>
+     <%= link_to "Avaliar!", review_destroy(@product), class: "btn btn-primary" %>
+    <% end %>
+    <%= link_to "Avaliar!", new_product_review_path(@product), class: "btn btn-primary" %>
+  <% end %>
+
+  <script>
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function() {
+            return $(this).attr('data-score');
+    }
+  });
+  </script>
 <% end -%>

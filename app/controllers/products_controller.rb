@@ -12,7 +12,15 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-  end
+     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+
+    if @reviews.blank?
+      @avg_review = 0
+    else
+      @avg_review = @reviews.average(:rating).round(2)
+    end
+
+ end
 
   # GET /products/new
   def new
@@ -29,7 +37,7 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      redirect_to @product, notice: 'O Produto foi criado com sucesso.'
     else
       render :new
     end
@@ -38,7 +46,7 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      redirect_to @product, notice: 'O produto foi atualizado com sucesso.'
     else
       render :edit
     end
@@ -47,7 +55,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    redirect_to products_url, notice: 'O produto foi deletado.'
   end
 
   def italian_culinary
