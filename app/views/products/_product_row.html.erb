@@ -1,23 +1,20 @@
-  <div class="col-sm-3 col-lg-3 col-md-3">
-	<div class="thumbnail">
-	  <%= image_tag "padrao.jpg", class: "img"%>
-      <%= form_for order_item, remote: true do |f| %>
-	    <div class="col-xs-8">
-		  <%= link_to product_path(product) do%>
-      		<h4>
-				<%= product.title %>
-			</h4>
-	      <% end %>
-    	</div>
-      	<h4 class="pull-right"><span style="color: green"><%= "R#{number_to_currency product.price}" %></span></h4>
-        <div class="input-group">
-          	<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-          	<div class="input-group-btn">
-							<%= f.hidden_field :product_id, value: product.id %>
-            	<%= f.submit "Adicionar ao carrinho", class: "btn btn-primary" %>
-          	</div>
-        </div>
+<div class="col-sm-3 col-lg-3 col-md-3">
+  <div class="thumbnail">
+    <%= image_tag "padrao.jpg", class: "img"%>
+    <%= form_for product, remote: true do |f| %>
+    <div class="col-xs-8">
+  	  <%= link_to product_path(product) do%>
+      	<h4><%= product.title %></h4>
       <% end %>
-    </div>
+  	</div>
+    	<h4 class="pull-right"><span style="color: green"><%= "R#{number_to_currency product.price}" %></span></h4>
+      <div class="input-group">
+        	<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+        	<div class="input-group-btn">
+						<%= f.hidden_field :product_id, value: product.id %>
+          	<%= f.submit "Adicionar ao carrinho", class: "btn btn-primary" %>
+        	</div>
+      </div>
+    <% end %>
   </div>
 </div>
