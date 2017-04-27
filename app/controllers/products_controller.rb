@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
   def index
     #set_current_order
     @products = Product.search(params[:find])
-    @order_item = current_order.order_items.new
+    # @order_item = current_order.order_items.new
     
   end
 
