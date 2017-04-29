@@ -7,7 +7,7 @@ gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
-# Use bootstap for front-end 
+# Use bootstap for front-end
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'autoprefixer-rails'
@@ -63,3 +63,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt',  '~> 3.1.11'
 
 gem 'figaro'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'mini_magick', '~> 4.3'

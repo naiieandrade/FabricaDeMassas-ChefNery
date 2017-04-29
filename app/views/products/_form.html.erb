@@ -41,6 +41,10 @@
     <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :title %>
   </div>
 
+  <%= f.label 'Photo' %>
+  <%= f.file_field :imageproduct %>
+
+
   <!-- submit -->
   <div class="actions">
     <%= f.submit %>

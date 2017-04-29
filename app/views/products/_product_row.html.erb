@@ -1,7 +1,18 @@
+
+
+<!-- This view shows the format for each product with name, image, price, link to product and insert to cart-->
 <%= content_tag :div, class: "col-sm-3 col-lg-3 col-md-3" do %>
   <%= content_tag :div, class: "mythumbnail" do %>
-    <%= image_tag "lasanha.jpg", class: "img-responsive"%>
+
+    <!-- Shows all products-->
     <%= form_for product, remote: true do |f| %>
+
+      <% if product.imageproduct %>
+        <%= image_tag(product.imageproduct.big) %>
+      <% elsif product.imageproduct = nil %>
+        <%= image_tag "lasanha.jpg", class: "img-responsive"%>
+      <% end %>
+
       <%= content_tag :div, class: "col-xs-8" do %>
         <%= link_to product_path(product) do%>
           <h4><%= product.title %></h4>
@@ -11,7 +22,7 @@
       <%= content_tag :div, class: "input-group" do %>
             <%= f.number_field :quantity, value: 1, class: "form-control", min: 1%>
             <%= content_tag :div, class: "input-group-btn" do %>
-                        <%= f.hidden_field :product_id, value: product.id %>
+              <%= f.hidden_field :product_id, value: product.id %>
             <%= f.submit "Adicionar ao carrinho", class: "btn btn-primary" %>
             <% end %>
       <% end %>

@@ -8,6 +8,11 @@
   </p>
 
   <p>
+  <!-- The imagem can be sized to big, medium or thumb -->
+  <%= image_tag(@product.imageproduct.medium) if @product.imageproduct %>
+  </p>
+
+  <p>
     <strong>Descrição:</strong>
     <%= @product.description %>
   </p>
@@ -31,6 +36,9 @@
     <% end %>
     </ul>
   </p>
+
+
+
 
   <%= link_to 'Edit', edit_product_path(@product) %> |
   <%= link_to 'Back', products_path %>

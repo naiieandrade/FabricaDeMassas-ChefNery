@@ -14,6 +14,7 @@ products = Product.create([
       description: "Delicioso Corniccione",
       category: "Culinária Italiana",
       price: 25,
+      imageproduct: "lasanha.jpg",
       :ingredients => Ingredient.where(:title => ['Ovos', 'Queijo'])},
     {title: 'Lasanha',
       description: "Deliciosa lasanha com molhos vermelho e branco",

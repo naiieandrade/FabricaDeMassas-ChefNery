@@ -3,7 +3,8 @@
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :ingredients
   has_and_belongs_to_many :orders
-
+  mount_uploader :imageproduct, ImageProductUploader
+  mount_uploaders :documents, DocumentUploader
 
   enum category: ["Culinária Italiana", "Culinária Oriental", "Culinária Árabe", "Culinária Brasileira"]
 
