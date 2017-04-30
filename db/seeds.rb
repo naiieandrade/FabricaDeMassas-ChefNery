@@ -7,7 +7,7 @@ ingredients = Ingredient.create([
   {title: 'Mandioca', price: '4.5'},
   {title: 'Presunto', price: '10.0'},
   {title: 'Queijo', price: '23.0'}
-  ])
+]),
 
 products = Product.create([
     {title: 'Corniccione',
