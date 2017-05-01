@@ -4,6 +4,7 @@ class InvoicesController < ApplicationController
 	include InvoicesHelper
 
 	def index
+		@invoices = InvoicingLedgerItem.where(recipient_id: current_user.id)
 	end
 
 	def new
@@ -15,20 +16,18 @@ class InvoicesController < ApplicationController
 		create_line_item(@invoice, current_order)
 		if @invoice.save
 			destroy_session_order
+			@ledger_item = InvoicingLedgerItem.where(recipient_id: current_user.id).last
+			create_invoice_pdf(@ledger_item, current_user)
+			redirect_to '/invoices'
 		end
 
 
 	end
 
 	def show
-		ledger_item = InvoicingLedgerItem.where(recipient_id: current_user.id).take
-		@line_items = InvoicingLineItem.where(ledger_item_id: ledger_item.id)
-		pdf_creator = Invoicing::LedgerItem::PdfGenerator.new(ledger_item)
-		user = User.find(current_user.id)
-		pdf_file = pdf_creator.render "#{user.name} Bill: #{ledger_item.id}.pdf"
+		@invoice = InvoicingLedgerItem.find(params[:id])
+		display_invoice_pdf(@invoice, current_user)		
 	end
-
-	
 
 
 end

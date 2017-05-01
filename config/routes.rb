@@ -48,7 +48,7 @@ Rails.application.routes.draw do
   end
   #match "update_status" => "orders#update_status", :as => "update_status"
 
-
+  resources :invoices
  root "home#index"
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
