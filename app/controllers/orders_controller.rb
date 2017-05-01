@@ -35,11 +35,11 @@ class OrdersController < ApplicationController
 	def update
         if current_order.update(order_params)
             flash[:success] = "Pedido atualizado"
-            redirect_to orders_path
+            #redirect_to orders_path
             # send email
             OrderEmail.order_request(current_user, current_order).deliver
             OrderEmail.order_confirmation(current_user, current_order).deliver
-            destroy_session_order
+            redirect_to '/invoices/create'
         else
           render 'edit'
         end
