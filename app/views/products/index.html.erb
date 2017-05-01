@@ -1,22 +1,24 @@
-<%= content_tag :div, :class => "container" do -%>
+<%= content_tag :div, :class => "set-black-background" do -%>
+  <%= content_tag :div, :class => "container" do -%>
 
-  <p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-  <%= content_tag :div, class: "row" do %>
+    <%= content_tag :div, class: "row" do %>
 
-    <%= render 'search' %>
+      <%= render 'search' %>
 
-    <% cont = 0 %>
+      <% cont = 0 %>
 
-    <% if @products.size > 0 %>
-      <% @products.each do |product| %>
-        <%= render "product_row", product: product, order_item: @order_item %>
+      <% if @products.size > 0 %>
+        <% @products.each do |product| %>
+          <%= render "product_row", product: product, order_item: @order_item %>
+        <% end %>
+      <% else %>
+        <%= content_tag :div do %>
+          <h2> <%=  "Produto não encontrado" %> </h2>
+        <% end %>
       <% end %>
-    <% else %>
-      <%= content_tag :div do %>
-        <h2> <%=  "Produto não encontrado" %> </h2>
-      <% end %>
+
     <% end %>
-
-  <% end %>
-<% end -%>
+  <% end -%>
+<% end %>

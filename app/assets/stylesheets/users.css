@@ -35,3 +35,138 @@
     color: white;
 }
 
+.space-between-fields-user-edit-10{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.space-between-fields-user-edit-15{
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.padding-top-5 {
+  padding-top: 5px;
+}
+
+.center-text {
+  padding-bottom: 20px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.height-to-bottom {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.bkgimage-update-user{  
+  background-image:url(https://images.unsplash.com/photo-1461174106495-31e4ca6ed98a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=6f93ddbb0327f5802c430af9ee8e9925);
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  color: white;
+  z-index: -5; 
+  top: 0;
+  font-size:18px;
+  padding:0px;  
+  position: absolute;
+
+}
+
+
+.bkgimage-info-user{
+    background-image:url(https://images.unsplash.com/photo-1461174106495-31e4ca6ed98a?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=6f93ddbb0327f5802c430af9ee8e9925);
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  color: white;
+  z-index: -5; 
+  top: 0;
+  font-size:18px;
+  padding:0px;  
+  position: absolute;
+}
+
+.set-image-background-LogIn {
+  background-image:url(https://images.unsplash.com/photo-1485768071412-bded21c2be08);
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  color: white;
+
+  top: 0;
+  font-size:18px;
+  padding:0px;
+  position: absolute;
+  opacity: 0.9;
+
+}
+
+.bkgimage-update-user{  
+  background-image:url();
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  color: white;
+  z-index: -5; 
+  top: 0;
+  font-size:18px;
+  padding:0px;  
+  position: absolute;
+
+}
+
+.set-image-background-newUser {
+    background-image:url(https://images.unsplash.com/photo-1429554513019-6c61c19ffb7e);
+    background-size: cover;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    bottom:0;
+    color: white;
+    top: 0;
+    font-size:18px;
+    padding:0px;
+    position: absolute;
+    opacity: 0.9;
+}
+
+.set-image-background-updateUserInfo {
+  background-image:url(https://images.unsplash.com/photo-1445979323117-80453f573b71);
+  background-size: cover;
+  background-position: center center;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  bottom:0;
+  color: white;
+
+  top: 0;
+  font-size:18px;
+  padding:0px;
+  position: absolute;
+  opacity: 0.9;
+
+}
+
+
