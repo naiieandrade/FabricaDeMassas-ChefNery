@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429141350) do
+ActiveRecord::Schema.define(version: 20170501225412) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -146,6 +146,30 @@ ActiveRecord::Schema.define(version: 20170429141350) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "product_id"
+	end
+
+  create_table "payments", force: :cascade do |t|
+    t.float    "amount"
+    t.integer  "responseCode"
+    t.string   "responseMessage"
+    t.string   "xref"
+    t.float    "amountReceived"
+    t.string   "transactionID"
+    t.string   "cardNumberMask"
+    t.string   "cardTypeCode"
+    t.string   "cardType"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "category"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "storages", force: :cascade do |t|

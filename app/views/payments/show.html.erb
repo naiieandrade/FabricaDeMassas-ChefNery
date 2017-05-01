@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @payment.amount %>
+</p>
+
+<p>
+  <strong>Responsecode:</strong>
+  <%= @payment.responseCode %>
+</p>
+
+<p>
+  <strong>Responsemessage:</strong>
+  <%= @payment.responseMessage %>
+</p>
+
+<p>
+  <strong>Xref:</strong>
+  <%= @payment.xref %>
+</p>
+
+<p>
+  <strong>Amountreceived:</strong>
+  <%= @payment.amountReceived %>
+</p>
+
+<p>
+  <strong>Transactionid:</strong>
+  <%= @payment.transactionID %>
+</p>
+
+<p>
+  <strong>Cardnumbermask:</strong>
+  <%= @payment.cardNumberMask %>
+</p>
+
+<p>
+  <strong>Cardtypecode:</strong>
+  <%= @payment.cardTypeCode %>
+</p>
+
+<p>
+  <strong>Cardtype:</strong>
+  <%= @payment.cardType %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>
