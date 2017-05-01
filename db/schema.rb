@@ -132,6 +132,8 @@ ActiveRecord::Schema.define(version: 20170501225412) do
     t.integer  "user_id"
     t.integer  "courier_id"
     t.integer  "order_status_id"
+    t.integer  "order_status_id"
+    t.integer  "courier_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -170,6 +172,15 @@ ActiveRecord::Schema.define(version: 20170501225412) do
     t.integer  "quantity"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "rating"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "product_id"
   end
 
   create_table "storages", force: :cascade do |t|

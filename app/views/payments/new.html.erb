@@ -1,3 +1,13 @@
+<div class="container">
+<% if @payment.errors.any? %>
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert">×</a>
+    <% for message in @payment.errors.full_messages do %>
+      <font color='red'> <%= message%> </font>
+    <% end %>
+  </div> 
+<% end %>
+
 <%- model_class = Payment -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => model_class.model_name.human %></h1>
@@ -46,3 +56,4 @@
               payments_path, :class => 'btn' %>
 </div>
 <% end %>
+</div>
