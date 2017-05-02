@@ -80,15 +80,6 @@ ActiveRecord::Schema.define(version: 20170429141350) do
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
-  create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
-    t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.integer  "product_id"
-  end
-
   create_table "storages", force: :cascade do |t|
     t.integer  "product_unit"
     t.datetime "created_at",   null: false
