@@ -29,9 +29,15 @@
                   </p>
                 </li>
                 <% for order in List_all_orders_from(courier) %>
-                  <li><p><%= order %></p></li>
+                  <li><p><%= order[0].to_s + " - " + order[1] %></p></li>
                 <% end %>
+
+
               </ul>
             </div>
           </div>
         </div>
+
+<% for order in list_all_orders %>
+  <li><p><%= order[0].to_s + " - " + order[1].shippment_address %></p></li>
+<% end %>
