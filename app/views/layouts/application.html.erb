@@ -2,31 +2,31 @@
 <html>
 <head>
 
-	<!-- Layout settings -->
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+  <!-- Layout settings -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-	<!-- Bootstrap Core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-	<!-- Custom CSS -->
-	<link href="https://blackrockdigital.github.io/startbootstrap-modern-business/css/modern-business.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="https://blackrockdigital.github.io/startbootstrap-modern-business/css/modern-business.css" rel="stylesheet">
 
   <!-- Some CSS -->
   <link href="css/products.css" rel="stylesheet">
   <link href="css/e-boots.css" rel="stylesheet">
   <link href="css/shop-homepage.css" rel="stylesheet">
 
-	<!-- Custom Fonts -->
-	<link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	<title>Fábrica de Massas do Chef Nery</title>
+  <title>Fábrica de Massas do Chef Nery</title>
 
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
   <title>Chefenery</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -56,11 +56,11 @@
                       <%= link_to 'Contato', home_contact_path %>
                   </li>
 
-				  <% if logged_in? && current_order? %>
-			         <li><%= render 'layouts/cart_text' %></li>
+          <% if logged_in? && current_order? %>
+               <li><%= render 'layouts/cart_text' %></li>
           <%elsif logged_in? && !current_order? %>
                 <li><%= link_to "Criar novo pedido", { :controller => :orders, :action => :create }, :method => :post %></li>
-				  <% end %>
+          <% end %>
 
                   <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Culinária <b class="caret"></b></a>
@@ -85,29 +85,29 @@
                       <ul class="dropdown-menu">
                           <li>
                               <% if logged_in? %>
+                                <!-- Operations to Administrator -->
                                 <% if is_administrator current_user %>
                                   <li><%= link_to "Todos Usuários", users_path %></li>
-                                  <li><%= link_to "Cadastrar outros usuários", users_new_path %></li>
+                                  <li><%= link_to "Cadastrar Usuários", users_new_path %></li>
+                                  <li><%= link_to "Entregadores", couriers_path %></li>
+                                  <li><%= link_to "Todos Produtos", products_path %></li>
+                                  <li><%= link_to "Cadastrar Produto", new_product_path %></li>
+                                  <li> <%= render "shared/notifications" %> </li>
+
                                 <% end %>
+                                <!-- Operation to all users -->
                                 <li><%= link_to "Perfil", current_user %></li>
                                 <li><%= link_to "Atualizar Perfil", edit_user_path(current_user) %></li>
                                 <li><%= link_to "Sair", logout_path, method: "delete" %></li>
-			                    <li><%#= render 'layouts/cart_text' %></li>
-                                <li><%= link_to "All Users", users_path %></li>
-                                <li><%= link_to "Profile", current_user %></li>
-                                <li><%= link_to "Update", edit_user_path(current_user) %></li>
-                                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+
                               <% else %>
+                                <!-- Operations to enter as User -->
                                 <li><%= link_to "Log in", login_path %></li>
                                 <li><%= link_to "Cadastrar", new_user_path %></li>
                               <% end %>
                           </li>
                       </ul>
                   </li>
-                  <% if logged_in? && is_administrator(current_user) %>       
-                    <li> <%= render "shared/notifications" %> </li>
-                    <li> <%= link_to 'Entregadores', couriers_path %> </li>
-                  <% end %>
               </ul>
           </div>
       </div>

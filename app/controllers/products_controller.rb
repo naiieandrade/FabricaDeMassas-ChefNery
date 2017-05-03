@@ -6,8 +6,8 @@ class ProductsController < ApplicationController
   def index
     #set_current_order
     @products = Product.search(params[:find])
-    @order_item = current_order.order_items.new
-    
+    # @order_item = current_order.order_items.new
+
   end
 
   # GET /products/1
@@ -77,7 +77,6 @@ class ProductsController < ApplicationController
   def show_category
 		if params[:category_desc] != nil
 	  	@products = Product.all.where(:category => params[:category_desc])
-  		@order_item = current_order.order_items.new
 		else
 			redirect_to root_path
 		end
@@ -91,7 +90,7 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []})
+      params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []}, :imageproduct)
     end
 end
 

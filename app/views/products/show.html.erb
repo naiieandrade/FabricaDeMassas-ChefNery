@@ -8,6 +8,11 @@
   </p>
 
   <p>
+  <!-- The imagem can be sized to big, medium or thumb -->
+  <%= image_tag(@product.imageproduct.medium) if @product.imageproduct %>
+  </p>
+
+  <p>
     <strong>Descrição:</strong>
     <%= @product.description %>
   </p>
@@ -44,25 +49,26 @@
 <br>
 <br>
 
- 
+
 <h3>Comentários:</h3>
   <% if @reviews.blank? %>
     <h3>Não temos avaliações. Adoraríamos que você fosse o primeiro!</h3>
     <%= link_to "Avaliar", new_product_review_path(@product), class: "btn btn-primary" %>
   <% else %>
-   
+
     <% @reviews.each do |review| %>
       <div class="reviews">
         <strong>
           <%= review.user.name %>
         </strong>
-         <div class="star-rating" data-score= <%= review.rating %> ></div>        
+         <div class="star-rating" data-score= <%= review.rating %> ></div>
         <p><%= review.comment %></p>
       </div>
      <%= link_to "Avaliar!", review_destroy(@product), class: "btn btn-primary" %>
     <% end %>
     <%= link_to "Avaliar!", new_product_review_path(@product), class: "btn btn-primary" %>
   <% end %>
+
 
   <script>
     $('.star-rating').raty({

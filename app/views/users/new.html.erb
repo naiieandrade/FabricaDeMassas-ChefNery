@@ -1,40 +1,50 @@
-<% if logged_in? && !(is_administrator current_user) %>
-  <% redirect_home %>
-<% end %>
+<%= content_tag :div, class: "set-image-background-newUser" do %>
+  <% if logged_in? && !(is_administrator current_user) %>
+    <% redirect_home %>
+  <% end %>
 
-<% provide(:title, 'Sign up') %>
-<% if is_administrator current_user %>
-  <h1>Cadastro de administrador</h1>
-<% else %>
-  <h1>Cadastro</h1>
-<% end %>
+  <% provide(:title, 'Sign up') %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
-
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-3 top">
 
       <% if is_administrator current_user %>
-        <%= f.label :is_administrator, "É administrador?" %>
-        <%= f.check_box :is_administrator %>
+        <h1>Cadastro de administrador</h1>
+      <% else %>
+        <h1>Cadastro</h1>
       <% end %>
 
-      <%= content_tag(:br) %>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
 
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <%= f.label :name, "Nome" %>
+          <%= f.text_field :name, class: 'form-control' %>
+        <% end %>
 
-    <% end %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <%= f.label :email, "E-mail" %>
+          <%= f.email_field :email, class: 'form-control' %>
+        <% end %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <%= f.label :password, "Senha" %>
+          <%= f.password_field :password, class: 'form-control' %>
+        <% end %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <%= f.label :password_confirmation, "Confirme sua senha" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <% end %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <% if is_administrator current_user %>
+            <%= f.label :is_administrator, "É Administrador?" %>
+            <%= f.check_box :is_administrator %>
+          <% end %>
+        <% end %>
+        <%= content_tag :div, class: "space-between-fields-users" do %>
+          <%= f.submit "Criar Conta", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
