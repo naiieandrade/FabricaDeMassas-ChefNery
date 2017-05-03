@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'invoices/index'
+
+  get 'invoices/show'
+
+  get 'invoices/create'
+
+  get 'invoices/new'
+
   resources :couriers
   get 'carts/show'
 
@@ -40,7 +48,7 @@ Rails.application.routes.draw do
   end
   #match "update_status" => "orders#update_status", :as => "update_status"
 
-
+  resources :invoices
  root "home#index"
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'

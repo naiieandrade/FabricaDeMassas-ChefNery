@@ -15,6 +15,11 @@ gem 'autoprefixer-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+gem 'invoicing'
+
+gem 'prawn'
+gem 'prawn-table'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
