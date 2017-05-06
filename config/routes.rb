@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'order_items/destroy'
 
+  resources :payments
+
   get 'sessions/new'
 
   get 'users/new'
