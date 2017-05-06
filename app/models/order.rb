@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
 	belongs_to :courier
 	has_many :order_items
   	belongs_to :order_status
+	has_and_belongs_to_many :products
+	has_one :payment
 	#validates :shippment_address, presence: true
 
 	def subtotal

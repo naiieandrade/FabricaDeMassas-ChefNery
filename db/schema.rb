@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501225412) do
+ActiveRecord::Schema.define(version: 20170506192139) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -132,23 +132,9 @@ ActiveRecord::Schema.define(version: 20170501225412) do
     t.integer  "user_id"
     t.integer  "courier_id"
     t.integer  "order_status_id"
-    t.integer  "order_status_id"
-    t.integer  "courier_id"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
-
-# Could not dump table "products" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
-  create_table "reviews", force: :cascade do |t|
-    t.integer  "rating"
-    t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "user_id"
-    t.integer  "product_id"
-	end
 
   create_table "payments", force: :cascade do |t|
     t.float    "amount"
@@ -162,17 +148,11 @@ ActiveRecord::Schema.define(version: 20170501225412) do
     t.string   "cardType"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "order_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "category"
-    t.decimal  "price"
-    t.integer  "quantity"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+# Could not dump table "products" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"

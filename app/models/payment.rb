@@ -2,10 +2,12 @@ require 'net/http'
 require 'uri'
 
 class Payment < ActiveRecord::Base
-	#validate :credit_card_api_access, :on => :create
+	
 	attr_accessor :cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear
 	MERCHANT_ID = "0000992"
   INTEGRATION_URL = "https://gateway.cardstream.com/direct/"
+
+	belongs_to :order
 
 	def request_data
 		{
