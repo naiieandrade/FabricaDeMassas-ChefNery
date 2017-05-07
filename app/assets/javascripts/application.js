@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$('#mycheckbox').change(function() {
+    $(this).next('div').toggle();
+});
+
+$('#myuncheckbox').change(function() {
+    $(this).next('div').toggle();
+});
