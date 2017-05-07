@@ -1,20 +1,34 @@
-<div class="col-sm-3 col-lg-3 col-md-3">
-  <div class="thumbnail">
-    <%= image_tag "padrao.jpg", class: "img"%>
-    <%= form_for product, remote: true do |f| %>
-    <div class="col-xs-8">
-  	  <%= link_to product_path(product) do%>
-      	<h4><%= product.title %></h4>
+<!-- This view shows the format for each product with name, image, price, link to product and insert to cart-->
+
+<!-- Shows all products-->
+<%= form_for @order_item, remote: true do |f| %>
+  <%= content_tag :div, class: "padding-between-containers" do %>
+    <%= content_tag :div, class: "container" do %>
+      <%= content_tag :div, class: "row" do %>
+        <%= content_tag :div, class: "col-xs-6 transparent-background-black white-second-background" do %>
+          <!-- Not present images will show a default image to that product-->
+          <%= content_tag :div, class: "mythumbnail image-size" do %>
+            <% if product.imageproduct.present? %>
+              <%= image_tag(product.imageproduct.big) %>
+            <% else %>
+              <%= image_tag "lasanha.jpg", class: "img-responsive"%>
+            <% end %>
+          <% end %>
+          <%= content_tag :div, class: "col-xs-8" do %>
+            <%= link_to product_path(product) do%>
+              <h4><%= product.title %></h4>
+            <% end %>
+          <% end %>
+            <h4 class="pull-right"><span style="color: green"><%= "R#{number_to_currency product.price}" %></span></h4>
+          <%= content_tag :div, class: "input-group" do %>
+                <%= f.number_field :quantity, value: 1, class: "form-control", min: 1%>
+                <%= content_tag :div, class: "input-group-btn" do %>
+                  <%= f.hidden_field :product_id, value: product.id %>
+                <%= f.submit "Adicionar ao carrinho", class: "btn btn-primary" %>
+                <% end %>
+          <% end %>
+        <% end %>
       <% end %>
-  	</div>
-    	<h4 class="pull-right"><span style="color: green"><%= "R#{number_to_currency product.price}" %></span></h4>
-      <div class="input-group">
-        	<%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-        	<div class="input-group-btn">
-						<%= f.hidden_field :product_id, value: product.id %>
-          	<%= f.submit "Adicionar ao carrinho", class: "btn btn-primary" %>
-        	</div>
-      </div>
     <% end %>
-  </div>
-</div>
+  <% end %>
+<% end %>

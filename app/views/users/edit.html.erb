@@ -1,26 +1,43 @@
-<% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<%= content_tag :div, class: "set-image-background-updateUserInfo" do %>
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
+  <% provide(:title, "Edit user") %>
+      
+  <%= content_tag :div, class: "center-text " do %>
+    <h1>Update your profile</h1>
+  <% end %>
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages' %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email, class: 'form-control' %>
+        <%= content_tag :div, class: "space-between-fields-user-edit-10" do %>
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control' %>
+        <% end %>
+        
+        <%= content_tag :div, class: "space-between-fields-user-edit-10" do %>
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        <% end %>
+        
+        <%= content_tag :div, class: "space-between-fields-user-edit-10" do %>
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control' %>
+        <% end %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: 'form-control' %>
+        <%= content_tag :div, class: "space-between-fields-user-edit-10" do %>
+          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <% end %>
 
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation, class: 'form-control' %>
+        <%= content_tag :div, class: "center-text" do %>
+          <%= f.submit "Salvar alterações", class: "btn btn-primary" %>
+        <% end %>
 
-      <%= f.submit "Salvar alterações", class: "btn btn-primary" %>
-    <% end %>
+      <% end %>
 
 
+    </div>
   </div>
-</div>
+<% end %>

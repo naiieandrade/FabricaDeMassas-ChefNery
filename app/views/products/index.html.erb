@@ -1,33 +1,24 @@
-<%= content_tag :div, :class => "container" do -%>
+<%= content_tag :div, class: "set-image-background-products top" do %>
+  <%= content_tag :div, :class => "container" do -%>
 
-  <p id="notice"><%= notice %></p>
+    <p id="notice"><%= notice %></p>
 
-  <center> <h1>Lista de Produtos</h1> </center>
-  <%= tag(:br) %> 
+    <%= content_tag :div, class: "row" do %>
 
-  <center>
-     <div class="row">
-      <%= render 'carrousel' %>
       <%= render 'search' %>
 
       <% cont = 0 %>
+
       <% if @products.size > 0 %>
         <% @products.each do |product| %>
           <%= render "product_row", product: product, order_item: @order_item %>
         <% end %>
       <% else %>
-        <%= tag(:br) %>
-        <div class="">
-          <h2> <%=  "Desculpe, produto não encontrado" %> </h2>
-        </div>
+        <%= content_tag :div do %>
+          <h2> <%=  "Produto não encontrado" %> </h2>
+        <% end %>
       <% end %>
-    </div>
-  </center>
-  
-  <% 2.times do %>
-    <%= tag(:br) %>
-  <% end %>
 
-  <center> <%= link_to 'New Product', new_product_path %> </center>
-
-<% end -%>
+    <% end %>
+  <% end -%>
+<% end %>

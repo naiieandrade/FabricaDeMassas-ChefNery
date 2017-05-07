@@ -1,5 +1,5 @@
 class CouriersController < ApplicationController
-  before_action :set_courier, only: [:show, :edit, :update, :destroy]
+  before_action :set_courier, only: [:show, :edit, :update, :destroy, :index]
   before_filter :home_if_not_admin
 
   # GET /couriers
@@ -65,7 +65,21 @@ class CouriersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_courier
-      @courier = Courier.find(params[:id])
+      if(!params[:id].nil?)
+        @courier = Courier.find(params[:id])
+      end
+
+      couriers = Courier.all
+      for courier in couriers do
+        puts(courier.id)
+        if(Order.where(courier_id: courier.id)[0].nil?)
+          courier.status = "livre"
+          courier.save
+        else
+          courier.status = "entregando"
+          courier.save
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

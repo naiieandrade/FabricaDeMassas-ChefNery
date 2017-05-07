@@ -7,13 +7,18 @@ gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
-# Use bootstap for front-end 
+# Use bootstap for front-end
 gem 'bootstrap-sass', '~> 3.2.0'
 
 gem 'autoprefixer-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
+
+gem 'invoicing'
+
+gem 'prawn'
+gem 'prawn-table'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -63,3 +68,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bcrypt',  '~> 3.1.11'
 
 gem 'figaro'
+
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+
+gem 'mini_magick', '~> 4.3'

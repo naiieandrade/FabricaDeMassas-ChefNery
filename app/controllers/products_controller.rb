@@ -1,13 +1,12 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :get_order_items
   helper_method :get_cost
 
   # GET /products
   def index
     #set_current_order
     @products = Product.search(params[:find])
-    @order_item = current_order.order_items.new
-    
   end
 
   # GET /products/1
@@ -77,7 +76,6 @@ class ProductsController < ApplicationController
   def show_category
 		if params[:category_desc] != nil
 	  	@products = Product.all.where(:category => params[:category_desc])
-  		@order_item = current_order.order_items.new
 		else
 			redirect_to root_path
 		end
@@ -91,7 +89,11 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []})
+      params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []}, :imageproduct)
+    end
+
+    def get_order_items
+      @order_item = current_order.order_items.new
     end
 end
 
