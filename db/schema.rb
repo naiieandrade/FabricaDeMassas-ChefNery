@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170506192139) do
+ActiveRecord::Schema.define(version: 20170507180843) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -126,12 +126,13 @@ ActiveRecord::Schema.define(version: 20170506192139) do
     t.text     "shippment_address"
     t.float    "amount"
     t.integer  "products_number"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
     t.decimal  "subtotal"
     t.integer  "user_id"
     t.integer  "courier_id"
     t.integer  "order_status_id"
+    t.decimal  "delivery_price",    precision: 8, scale: 2, default: 10.0
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"

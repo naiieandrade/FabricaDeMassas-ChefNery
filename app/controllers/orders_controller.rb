@@ -18,7 +18,6 @@ class OrdersController < ApplicationController
 	def create
 		@order = Order.create
 		set_session_order(@order)
-		current_order
 		current_order.user = current_user
 		order_status = OrderStatus.find(1)
 		current_order.order_status = order_status
