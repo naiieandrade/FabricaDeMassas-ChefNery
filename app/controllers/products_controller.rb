@@ -93,7 +93,9 @@ class ProductsController < ApplicationController
     end
 
     def get_order_items
-      @order_item = current_order.order_items.new
+      if !current_order.nil?
+        @order_item = current_order.order_items.new
+      end
     end
 end
 

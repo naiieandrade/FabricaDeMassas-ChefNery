@@ -1,0 +1,2 @@
+class Spice < Ingredient
+end

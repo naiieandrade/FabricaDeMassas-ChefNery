@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507180843) do
+ActiveRecord::Schema.define(version: 20170510121749) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -46,9 +46,10 @@ ActiveRecord::Schema.define(version: 20170507180843) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
-    t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "type_ingredient"
   end
 
   create_table "ingredients_products", id: false, force: :cascade do |t|
@@ -137,6 +138,11 @@ ActiveRecord::Schema.define(version: 20170507180843) do
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
+  create_table "pasta", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.float    "amount"
     t.integer  "responseCode"
@@ -162,6 +168,11 @@ ActiveRecord::Schema.define(version: 20170507180843) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "product_id"
+  end
+
+  create_table "spices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "storages", force: :cascade do |t|

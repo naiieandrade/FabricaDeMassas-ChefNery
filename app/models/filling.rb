@@ -1,0 +1,2 @@
+class Filling < Ingredient
+end

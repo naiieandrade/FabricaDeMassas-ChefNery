@@ -1,12 +1,12 @@
-ingredients = Ingredient.create([
-  {title: 'Farinha', price: '2.2'},
-  {title: 'Molho', price: '6.99'},
-  {title: 'Ovos', price: '0.27'},
-  {title: 'Carne Moída', price: '16.00'},
-  {title: 'Carne de Sol', price: '25.0'},
-  {title: 'Mandioca', price: '4.5'},
-  {title: 'Presunto', price: '10.0'},
-  {title: 'Queijo', price: '23.0'}
+ingredients = Pastum.create([
+  {title: 'Farinha', description: '2.2'},
+  {title: 'Molho', description: '6.99'},
+  {title: 'Ovos', description: '0.27'},
+  {title: 'Carne Moída', description: '16.00'},
+  {title: 'Carne de Sol', description: '25.0'},
+  {title: 'Mandioca', description: '4.5'},
+  {title: 'Presunto', description: '10.0'},
+  {title: 'Queijo', description: '23.0'}
 ]),
 
 products = Product.create([
