@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510121749) do
+ActiveRecord::Schema.define(version: 20170510124711) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20170510121749) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
+  end
+
+  create_table "fillings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredient_factories", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "ingredient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -168,6 +179,11 @@ ActiveRecord::Schema.define(version: 20170510121749) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "product_id"
+  end
+
+  create_table "sauces", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "spices", force: :cascade do |t|

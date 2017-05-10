@@ -1,3 +1,5 @@
+require 'ingredient_factory'
+
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
@@ -21,10 +23,15 @@ class IngredientsController < ApplicationController
 
   # POST /ingredients
   def create
-    @ingredient = Ingredient.new(ingredient_params)
+    factory = IngredientFactory.new
+    @ingredient = factory.create_ingredient(params[:ingredient_type].to_s)
 
+    @ingredient.title = params[:title]
+    @ingredient.description = params[:desc]
+    @ingredient.set_type(params[:ingredient_type])
+    
     if @ingredient.save
-      redirect_to @ingredient, notice: 'Ingredient was successfully created.'
+      redirect_to ingredients_path, notice: 'Ingredient was successfully created.'
     else
       render :new
     end
@@ -33,7 +40,7 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1
   def update
     if @ingredient.update(ingredient_params)
-      redirect_to @ingredient, notice: 'Ingredient was successfully updated.'
+      redirect_to ingredients_path , notice: 'Ingredient was successfully updated.'
     else
       render :edit
     end

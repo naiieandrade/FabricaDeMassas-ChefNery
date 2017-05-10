@@ -1,25 +1,19 @@
-<%= form_for(@ingredient) do |f| %>
-  <% if @ingredient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+<%= form_tag url_for(:controller => 'ingredients', :action => 'create'), :method => 'post' do %>
 
-      <ul>
-      <% @ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+  
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= label_tag "Nome" %>
+    <%= text_field_tag :title, "", class: "form-control", id: "xd" %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
+    <%= text_field_tag :desc, "", class: "form-control" %>
   </div>
+
+  <div class="field">
+    <%= select_tag 'ingredient_type', options_for_select([ 'pasta','spice','filling','sauce']) %><br>
+    
   <div class="actions">
-    <%= f.submit %>
+    <%= button_tag "Criar ingrediente" %>
   </div>
+
 <% end %>
