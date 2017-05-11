@@ -74,6 +74,6 @@ gem 'bcrypt',  '~> 3.1.11'
 
 gem 'figaro'
 
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave'
 
 gem 'mini_magick', '~> 4.3'

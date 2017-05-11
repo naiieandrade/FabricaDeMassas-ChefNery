@@ -1,4 +1,4 @@
-class ReviewVersion < ActiveRecord::Base
+class ReviewVersion
 
   attr_reader :comment, :rating
 
