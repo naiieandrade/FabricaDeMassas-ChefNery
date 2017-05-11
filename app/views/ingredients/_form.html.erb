@@ -1,19 +1,28 @@
+
+<% provide(:title, 'Cadastrar Ingrediente') %>
+
 <%= form_tag url_for(:controller => 'ingredients', :action => 'create'), :method => 'post' do %>
 
-  
-  <div class="field">
-    <%= label_tag "Nome" %>
-    <%= text_field_tag :title, "", class: "form-control", id: "xd" %>
-  </div>
-  <div class="field">
-    <%= text_field_tag :desc, "", class: "form-control" %>
-  </div>
 
-  <div class="field">
-    <%= select_tag 'ingredient_type', options_for_select([ 'pasta','spice','filling','sauce']) %><br>
-    
+ <div class="space-between-fields-users">
+   <%= label_tag "Nome" %>
+   <%= text_field_tag :title, nil, class: "form-control-ingredient"%>
+ </div>
+
+ <div class="space-between-fields-users">
+   <%= label_tag "Descrição" %><br>
+   <%= text_area_tag :desc, nil, :size => "35x5"%>
+ </div>
+
+  <div class="space-between-fields-users">
+    <%= label_tag "tipo de ingrediente" %>
+    <%= select_tag 'ingredient_type', options_for_select({ Massa: 'pasta', Tempero: 'spice', Recheio: 'filling',Molho: 'sauce'}) %><br>
+  <br><br><br>
+
   <div class="actions">
     <%= button_tag "Criar ingrediente" %>
   </div>
 
 <% end %>
+
+
