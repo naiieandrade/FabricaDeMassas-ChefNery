@@ -23,7 +23,6 @@ class OrdersController < ApplicationController
 		order_status = OrderStatus.find(1)
 		current_order.order_status = order_status
 		if current_order.save
-			#flash[:success] = "Pedido realizado com sucesso"
 			redirect_to '/products'
 		
 		else
@@ -35,8 +34,6 @@ class OrdersController < ApplicationController
 	def update
         if current_order.update(order_params)
             flash[:success] = "Pedido atualizado"
-            # redirect_to orders_path
-         	MailObserver.after_submit_order(current_user, current_order)
            	redirect_to '/invoices/create'
         else
           render 'edit'

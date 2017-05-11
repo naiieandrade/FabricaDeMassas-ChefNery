@@ -1,6 +1,6 @@
 require "#{Rails.root}/app/mailers/order_email.rb" 
 
-class MailObserver  < ActiveRecord::Observer
+class MailObserver < ActiveRecord::Observer
 
 	observer :order
 	
