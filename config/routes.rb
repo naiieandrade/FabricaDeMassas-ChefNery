@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   get 'comments/create'
 
-  resources :payments
+  resources :credit_card_payments
+
+	resources :bank_billet_payments
 
   get 'sessions/new'
 

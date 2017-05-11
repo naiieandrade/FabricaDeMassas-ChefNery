@@ -1,7 +1,7 @@
 require 'net/http'
 require 'uri'
 
-class CreditCardPayment < Payment
+class CreditCardPayment < PaymentStrategy
 	
 	attr_accessor :cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear
 	MERCHANT_ID = "0000992"
