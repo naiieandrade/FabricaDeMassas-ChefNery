@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511014032) do
+ActiveRecord::Schema.define(version: 20170507180843) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -154,11 +154,6 @@ ActiveRecord::Schema.define(version: 20170511014032) do
 
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
-
-  create_table "review_histories", force: :cascade do |t|
-    t.integer "versions",       default: 0
-    t.integer "version_number"
-  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"

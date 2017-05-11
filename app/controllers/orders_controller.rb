@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  
   def index
   	@order_status = OrderStatus.all
 	@orders = Order.all
@@ -34,11 +35,9 @@ class OrdersController < ApplicationController
 	def update
         if current_order.update(order_params)
             flash[:success] = "Pedido atualizado"
-            #redirect_to orders_path
-            # send email
-            #OrderEmail.order_request(current_user, current_order).deliver
-            #OrderEmail.order_confirmation(current_user, current_order).deliver
-            redirect_to '/invoices/create'
+            # redirect_to orders_path
+         	MailObserver.after_submit_order(current_user, current_order)
+           	redirect_to '/invoices/create'
         else
           render 'edit'
         end
