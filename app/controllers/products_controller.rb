@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :get_order_items
+  before_action :check_admin, only: [:new, :update, :destroy]
   helper_method :get_cost
 
   # GET /products
@@ -96,6 +97,14 @@ class ProductsController < ApplicationController
       if !current_order.nil?
         @order_item = current_order.order_items.new
       end
+    end
+
+    def check_admin
+      if is_administrator(current_user)
+        # do nothing
+      else
+        redirect_to root_path
+      end 
     end
 end
 

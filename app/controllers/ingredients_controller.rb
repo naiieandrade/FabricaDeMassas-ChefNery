@@ -2,6 +2,7 @@ require 'ingredient_factory'
 
 class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
+  before_action :check_admin
 
   # GET /ingredients
   def index
@@ -61,5 +62,13 @@ class IngredientsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def ingredient_params
       params.require(:ingredient).permit(:title, :price)
+    end
+
+    def check_admin
+      if is_administrator(current_user)
+        # do nothing
+      else
+        redirect_to root_path
+      end
     end
 end
