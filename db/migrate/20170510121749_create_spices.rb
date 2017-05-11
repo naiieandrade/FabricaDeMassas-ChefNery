@@ -1,0 +1,8 @@
+class CreateSpices < ActiveRecord::Migration
+  def change
+    create_table :spices do |t|
+
+      t.timestamps null: false
+    end
+  end
+end

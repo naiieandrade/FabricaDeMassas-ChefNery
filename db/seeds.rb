@@ -1,12 +1,22 @@
-ingredients = Ingredient.create([
-  {title: 'Farinha', price: '2.2'},
-  {title: 'Molho', price: '6.99'},
-  {title: 'Ovos', price: '0.27'},
-  {title: 'Carne Moída', price: '16.00'},
-  {title: 'Carne de Sol', price: '25.0'},
-  {title: 'Mandioca', price: '4.5'},
-  {title: 'Presunto', price: '10.0'},
-  {title: 'Queijo', price: '23.0'}
+ingredients = Pastum.create([
+  {title: 'Farinha', description: '2.2', type_ingredient: 'pasta'}
+]),
+ingredients = Filling.create([
+  {title: 'Carne Moída', description: '16.00', type_ingredient: 'filling'},
+  {title: 'Carne de Sol', description: '25.0', type_ingredient: 'filling'},
+  {title: 'Mandioca', description: '4.5', type_ingredient: 'filling'},
+  {title: 'Presunto', description: '10.0', type_ingredient: 'filling'},
+  {title: 'Queijo', description: '23.0', type_ingredient: 'filling'}
+]),
+
+ingredients = Spice.create([
+  {title: 'Pimenta', description: '16.00', type_ingredient: 'spice'},
+  {title: 'Orégano', description: '25.0', type_ingredient: 'spice'}
+]),
+
+ingredients = Sauce.create([
+  {title: 'Tomate', description: '16.00', type_ingredient: 'sauce'},
+  {title: 'Caipira', description: '25.0', type_ingredient: 'sauce'}
 ]),
 
 products = Product.create([

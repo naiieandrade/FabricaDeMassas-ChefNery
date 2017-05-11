@@ -1,25 +1,28 @@
-<%= form_for(@ingredient) do |f| %>
-  <% if @ingredient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
 
-      <ul>
-      <% @ingredient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<% provide(:title, 'Cadastrar Ingrediente') %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
+<%= form_tag url_for(:controller => 'ingredients', :action => 'create'), :method => 'post' do %>
+
+
+ <div class="space-between-fields-users">
+   <%= label_tag "Nome" %>
+   <%= text_field_tag :title, nil, class: "form-control-ingredient"%>
+ </div>
+
+ <div class="space-between-fields-users">
+   <%= label_tag "Descrição" %><br>
+   <%= text_area_tag :desc, nil, :size => "35x5"%>
+ </div>
+
+  <div class="space-between-fields-users">
+    <%= label_tag "tipo de ingrediente" %>
+    <%= select_tag 'ingredient_type', options_for_select({ Massa: 'pasta', Tempero: 'spice', Recheio: 'filling',Molho: 'sauce'}) %><br>
+  <br><br><br>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= button_tag "Criar ingrediente" %>
   </div>
+
 <% end %>
+
+
