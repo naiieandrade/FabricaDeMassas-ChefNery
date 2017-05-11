@@ -25,7 +25,9 @@ class InvoicesController < ApplicationController
 	end
 
 	def show
-		@invoice = InvoicingLedgerItem.find(params[:id])
+		if !params[:id].nil?
+			@invoice = InvoicingLedgerItem.find(params[:id])
+		end
 		display_invoice_pdf(@invoice, current_user)		
 	end
 

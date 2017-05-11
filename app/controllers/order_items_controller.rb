@@ -1,7 +1,9 @@
 class OrderItemsController < ApplicationController
   def create
     @order = current_order
-    @order_item = @order.order_items.new(order_item_params)
+    if(!@order.nil?)
+      @order_item = @order.order_items.new(order_item_params)
+    end
     @order.save
     session[:order_id] = @order.id
     redirect_to "/products"
