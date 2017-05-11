@@ -1,8 +1,11 @@
+
 <%= content_tag :div, :class => "container" do -%>
 
-  <h1></h1>
-
-  <% @products.each do |product| %>
+  <% @products.each_with_index do |product, index| %>
+            <% if index == 0 %>
+                <%= product.set_background(product.category_of_product) %>
+            <% end %>
+            <%= puts product.category_of_product %>
             <%= render "product_row", product: product, order_item: @order_item %>
   <% end %>
 

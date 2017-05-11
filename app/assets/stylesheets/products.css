@@ -18,6 +18,89 @@ img {
 }
 
 
+.culinariabrasileira {
+    background-image: url(/assets/backgroundCategory/culináriabrasileira.jpg);
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size:18px;
+    padding:0px;
+    opacity: 0.9;
+    /* Set rules to fill background */
+    min-height: 200%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.culinariaitaliana {
+    background-image: url(/assets/backgroundCategory/culináriaitaliana.jpg);
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size:18px;
+    padding:0px;
+    opacity: 0.9;
+    /* Set rules to fill background */
+    min-height: 200%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.culinariaarabe {
+    background-image: url(/assets/backgroundCategory/culináriaárabe.jpg);
+    background-size: contain;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size:18px;
+    padding:0px;
+    opacity: 0.9;
+    /* Set rules to fill background */
+    min-height: 200%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.culinariaoriental {
+    background-image: url(/assets/backgroundCategory/culináriaoriental.jpg);
+    background-size: contain;
+    background-position: center center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size:18px;
+    padding:0px;
+    opacity: 0.9;
+    /* Set rules to fill background */
+    min-height: 200%;
+    min-width: 1024px;
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    /* Set up positioning */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 .set-image-background-products {
     background-image:url(https://images.unsplash.com/photo-1430364917171-5ad508ea49c9?dpr=1&amp;auto=format&amp;fit=crop&amp;w=767&amp;h=1150&amp;q=80&amp;cs=tinysrgb&amp;crop=&amp;bg=);
     background-size: contain;
