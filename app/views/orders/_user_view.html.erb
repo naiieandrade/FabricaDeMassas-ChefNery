@@ -3,14 +3,15 @@
 <% if !@orders.blank? %>
 	<% @orders.each do |order| %>
 		<% if order.user_id == current_user.id %>
+
 			<div class="thumbnail">
-				Pedido nº: 
+				Pedido nº:
 				<%= order.id %>
 				<%= tag(:br) %>
 				Cliente:
 				<%= link_to user_path(order.user) do %>
 					<%= order.user.name %>
-				<% end %> 
+				<% end %>
 				<%= tag (:br) %>
 				Produtos:
 				<% order.order_items.each do |order_item| %>
@@ -19,11 +20,19 @@
 					<% end %>
 				<% end %>
 				<%= tag(:br) %>
-				Endereço de entrega: 
+				Endereço de entrega:
 				<%= order.shippment_address %>
 				<%= tag(:br) %>
 				<%#=select_tag :order_status_id, options_for_select(@order_status.collect{ |u| [u.description, u.id] }, :selected => params[:order_status_id])%>
 				Status: <%= order.order_status.description%>
+
+				<% if order.order_status_id == 2 %>
+					<%= content_tag :div, class: "btn btn-primary color-button-white" do %>
+
+				                <%= link_to "Editar Pedido", edit_user_path(current_user) %>
+
+				        <% end %>
+				 <% end %>
 			</div>
 		<% end %>
 	<% end %>
