@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 20170507180843) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "ingredients_products", id: false, force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "ingredient_id"
-  end
-
-  add_index "ingredients_products", ["ingredient_id"], name: "index_ingredients_products_on_ingredient_id"
-  add_index "ingredients_products", ["product_id"], name: "index_ingredients_products_on_product_id"
-
   create_table "invoicing_ledger_items", force: :cascade do |t|
     t.integer  "sender_id"
     t.integer  "recipient_id"
@@ -152,8 +144,16 @@ ActiveRecord::Schema.define(version: 20170507180843) do
     t.integer  "order_id"
   end
 
-# Could not dump table "products" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "category"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "imageproduct"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
