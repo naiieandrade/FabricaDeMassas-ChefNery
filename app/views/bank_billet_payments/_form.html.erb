@@ -1,0 +1,17 @@
+<%= form_for(@bank_billet_payment) do |f| %>
+  <% if @bank_billet_payment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bank_billet_payment.errors.count, "error") %> prohibited this bank_billet_payment from being saved:</h2>
+
+      <ul>
+      <% @bank_billet_payment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

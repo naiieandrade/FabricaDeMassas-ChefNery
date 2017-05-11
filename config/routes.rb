@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bank_billet_payments
   get 'invoices/index'
 
   get 'invoices/show'

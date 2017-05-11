@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<%= image_tag(@png_path) %>
+<br>
+<%= @num.to_s.gsub(/.{1}(?=.)/, '\0 ') %>
+<br>
+
+<%= link_to 'Edit', edit_bank_billet_payment_path(@bank_billet_payment) %> |
+<%= link_to 'Back', bank_billet_payments_path %>
