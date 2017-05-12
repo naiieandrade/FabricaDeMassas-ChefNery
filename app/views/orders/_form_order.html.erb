@@ -30,8 +30,9 @@
     </div>
     <%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
 
-  <%= button_to "Adicionar mais produtos ao carrinho", products_path , class: 'btn btn-primary'%>
 <% end %>
+<br>
+  <%= button_to "Adicionar mais produtos ao carrinho", products_path, :method => :get , class: 'btn btn-primary'%>
 
 <script type="text/javascript">
 $('#mycheckbox').change(function() {

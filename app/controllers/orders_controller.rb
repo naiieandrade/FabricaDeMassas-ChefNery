@@ -1,16 +1,18 @@
 class OrdersController < ApplicationController
   
   def index
-  	@order_status = OrderStatus.all
-	@orders = Order.all
+  	if(current_order.nil?)
+  		@order_status = OrderStatus.all
+		@orders = Order.all
+	end
 
 	if logged_in? and is_administrator(current_user)
 		@orders = sort_orders
 	end
   end
 
-	def show
-	end
+	# def show
+	# end
 
   def new
 		@order = Order.new

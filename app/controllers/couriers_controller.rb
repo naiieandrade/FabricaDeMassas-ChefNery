@@ -71,7 +71,6 @@ class CouriersController < ApplicationController
 
       couriers = Courier.all
       for courier in couriers do
-        puts(courier.id)
         if(Order.where(courier_id: courier.id)[0].nil?)
           courier.status = "livre"
           courier.save

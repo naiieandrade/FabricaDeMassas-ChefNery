@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512023226) do
+ActiveRecord::Schema.define(version: 20170512023558) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -57,19 +57,19 @@ ActiveRecord::Schema.define(version: 20170512023226) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
-    t.float    "price"
+    t.string   "description"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "type_ingredient"
   end
 
   create_table "ingredients_products", id: false, force: :cascade do |t|
-    t.integer "product_id"
-    t.integer "ingredient_id"
+    t.integer "ingredient_id", null: false
+    t.integer "product_id",    null: false
   end
 
-  add_index "ingredients_products", ["ingredient_id"], name: "index_ingredients_products_on_ingredient_id"
-  add_index "ingredients_products", ["product_id"], name: "index_ingredients_products_on_product_id"
+  add_index "ingredients_products", ["ingredient_id", "product_id"], name: "index_ingredients_products_on_ingredient_id_and_product_id"
+  add_index "ingredients_products", ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
 
   create_table "invoicing_ledger_items", force: :cascade do |t|
     t.integer  "sender_id"
@@ -169,8 +169,16 @@ ActiveRecord::Schema.define(version: 20170512023226) do
     t.integer  "order_id"
   end
 
-# Could not dump table "products" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "products", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "category"
+    t.decimal  "price"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "imageproduct"
+  end
 
 
   create_table "review_histories", force: :cascade do |t|

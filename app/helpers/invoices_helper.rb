@@ -18,6 +18,8 @@ module InvoicesHelper
 	end
 
 	def display_invoice_pdf(ledger_item, current_user)
-		send_file("#{current_user.name} Bill: #{ledger_item.id}.pdf", :filename => "#{current_user.name} Bill: #{ledger_item.id}.pdf", :disposition => 'inline', :type => "application/pdf")	
+		if(!current_user.nil?)
+			send_file("#{current_user.name} Bill: #{ledger_item.id}.pdf", :filename => "#{current_user.name} Bill: #{ledger_item.id}.pdf", :disposition => 'inline', :type => "application/pdf")	
+		end
 	end
 end

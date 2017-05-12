@@ -26,7 +26,7 @@ class IngredientsController < ApplicationController
   def create
     factory = IngredientFactory.new
     @ingredient = factory.create_ingredient(params[:ingredient_type].to_s)
-
+    
     @ingredient.title = params[:title]
     @ingredient.description = params[:desc]
     @ingredient.set_type(params[:ingredient_type])

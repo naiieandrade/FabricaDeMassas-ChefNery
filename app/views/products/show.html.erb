@@ -27,15 +27,6 @@
     R$<%= @product.price %>
   </p>
 
-  <p>
-    <strong>Ingredientes:</strong>
-    <ul>
-    <%@product.ingredients.each do |i|%>
-        <li><%= i.title %></li>
-    <% end %>
-    </ul>
-  </p>
-
   <% if logged_in? and is_administrator(current_user) %>
   <p>
     <%= link_to 'Editar Produto', edit_product_path(@product), class: "btn btn-warning"%>
@@ -53,7 +44,7 @@
 <h3>Comentários:</h3>
   <% if @reviews.blank? %>
     <h3>Não temos avaliações. Adoraríamos que você fosse o primeiro!</h3>
-    <%= link_to "Avaliar", new_product_review_path(@product), class: "btn btn-primary" %>
+    <%#= link_to "Avaliar", new_product_review_path(@product), class: "btn btn-primary" %>
   <% else %>
 
     <% @reviews.each do |review| %>

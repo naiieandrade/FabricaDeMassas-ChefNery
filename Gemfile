@@ -15,6 +15,8 @@ gem 'autoprefixer-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+gem 'simplecov'
+
 gem 'invoicing'
 
 gem 'prawn'
