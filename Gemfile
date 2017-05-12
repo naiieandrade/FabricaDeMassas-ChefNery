@@ -21,8 +21,11 @@ gem 'prawn'
 
 gem 'prawn-table'
 
-# memento pattern gem
+# memento pattern 
 gem 'memento', '~> 0.4.3'
+
+# observer pattern 
+gem 'rails-observers'
 
 
 # Use SCSS for stylesheets

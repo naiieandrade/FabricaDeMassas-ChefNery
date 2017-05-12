@@ -56,10 +56,8 @@
                       <%= link_to 'Contato', home_contact_path %>
                   </li>
 
-          <% if logged_in? && current_order? %>
+          <% if logged_in? %>
                <li><%= render 'layouts/cart_text' %></li>
-          <%elsif logged_in? && !current_order? %>
-                <li><%= link_to "Criar novo pedido", { :controller => :orders, :action => :create }, :method => :post %></li>
           <% end %>
 
                   <li class="dropdown">

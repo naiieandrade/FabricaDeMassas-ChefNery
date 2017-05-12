@@ -1,7 +1,12 @@
 module OrdersHelper
 
 	def current_order
-	    @current_order ||= Order.find_by(id: session[:order_id])
+		if !session[:order_id].nil?
+			@current_order = Order.find(session[:order_id])
+		else
+			@current_order = Order.new
+		end
+		@current_order
 	end
 
 	def set_session_order(order)

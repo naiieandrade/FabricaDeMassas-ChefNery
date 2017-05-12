@@ -2,7 +2,7 @@ class CreateIngredients < ActiveRecord::Migration
   def change
     create_table :ingredients do |t|
       t.string :title
-      t.float :price
+      t.string :description
 
       t.timestamps null: false
     end

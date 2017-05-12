@@ -44,11 +44,23 @@ ActiveRecord::Schema.define(version: 20170512023226) do
     t.integer  "status",     default: 0
   end
 
+  create_table "fillings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredient_factories", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "ingredient_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
     t.float    "price"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "type_ingredient"
   end
 
   create_table "ingredients_products", id: false, force: :cascade do |t|
@@ -137,6 +149,11 @@ ActiveRecord::Schema.define(version: 20170512023226) do
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
+  create_table "pasta", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.float    "amount"
     t.integer  "responseCode"
@@ -155,6 +172,7 @@ ActiveRecord::Schema.define(version: 20170512023226) do
 # Could not dump table "products" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
 
+
   create_table "review_histories", force: :cascade do |t|
     t.integer "version_number"
     t.integer "versions",       default: 0
@@ -167,6 +185,16 @@ ActiveRecord::Schema.define(version: 20170512023226) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "product_id"
+  end
+
+  create_table "sauces", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "storages", force: :cascade do |t|
