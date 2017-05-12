@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CouriersControllerTest < ActionController::TestCase
   setup do
+    log_in(users(:one))
     @courier = couriers(:one)
   end
 
@@ -22,11 +23,6 @@ class CouriersControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to courier_path(assigns(:courier))
-  end
-
-  test "should show courier" do
-    get :show, id: @courier
-    assert_response :success
   end
 
   test "should get edit" do

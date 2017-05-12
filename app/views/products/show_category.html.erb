@@ -5,7 +5,7 @@
             <% if index == 0 %>
                 <%= product.set_background(product.category_of_product) %>
             <% end %>
-            <%= puts product.category_of_product %>
+            <%#= puts product.category_of_product %>
             <%= render "product_row", product: product, order_item: @order_item %>
   <% end %>
 

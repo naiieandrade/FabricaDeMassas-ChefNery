@@ -1,6 +1,8 @@
 <%= form_for @order do |f| %>
 
 	<%= f.text_field :shippment_address, :placeholder => 'Endereço', class: 'form-control' %> <br />
+	<%= f.label "Categoria", class: "text-white" %> <br />
+	<%= f.select :payment_mode, Order.payment_modes.to_a.map {|w| [w.to_s.humanize, w]} %> <br />
 	<%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
 
 <% end %>

@@ -1,0 +1,78 @@
+<div class="container">
+<% if @credit_card_payment.errors.any? %>
+  <div class="alert alert-error">
+    <a class="close" data-dismiss="alert">×</a>
+    <% for message in @credit_card_payment.errors.full_messages do %>
+      <font color='red'> <%= message %> </font>
+    <% end %>
+  </div> 
+<% end %>
+
+<%- model_class = CreditCardPayment -%>
+<div class="row" >
+<div style="float: left">
+<div class="page-header">
+
+
+  <h1> Efetuar pagamento </h1>
+</div>
+
+<%= form_for @credit_card_payment, :html => { :class => 'form-horizontal' } do |f| %>
+
+<div style="display:inline-block" >
+<div class="control-group">
+  <%= f.label :amount, 'Valor', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :amount, :class => 'form-control', :readonly => true, :placeholder => current_order.subtotal.to_s %>
+    <%# Poe a de baixo pra passar o valor do pedido %>
+    <%#= f.text_field "R$ #{pedido.total_price}", :class => 'form-control', :readonly => true %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :cardNumber,'Número do cartão', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :cardNumber, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :cardCVV,'Código de segurança', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.text_field :cardCVV, :class => 'form-control' %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :cardExpiryMonth,'Mês de validade', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.select(:cardExpiryMonth, options_for_select(cc_months)) %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :cardExpiryYear,'Ano de validade', :class => 'control-label' %>
+  <div class="controls">
+    <%= f.select(:cardExpiryYear, options_for_select(cc_years)) %>
+  </div>
+</div>
+
+<div class="form-actions">
+  <%= tag(:br) %>
+  <%= f.submit 'Efetuar pagamento', :class => 'btn btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+              credit_card_payments_path, :class => 'btn' %>
+</div>
+</div>
+
+</div>
+
+
+<div style="margin-top: 2cm">
+<%= image_tag 'http://www.planejedisney.com.br/wp-content/uploads/2015/07/cartoessegredo.png' , width: 600 %>
+
+</div>
+</div>
+
+<% end %>
+</div>

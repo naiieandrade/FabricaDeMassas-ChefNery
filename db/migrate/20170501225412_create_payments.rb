@@ -1,6 +1,6 @@
 class CreatePayments < ActiveRecord::Migration
   def change
-    create_table :payments do |t|
+    create_table :payment_strategies do |t|
       t.float :amount
       t.integer :responseCode
       t.string :responseMessage

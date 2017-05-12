@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bank_billet_payments
   get 'invoices/index'
 
   get 'invoices/show'
@@ -17,7 +18,11 @@ Rails.application.routes.draw do
 
   get 'order_items/destroy'
 
-  resources :payments
+  get 'comments/create'
+
+  resources :credit_card_payments
+
+	resources :bank_billet_payments
 
   get 'sessions/new'
 
@@ -33,13 +38,14 @@ Rails.application.routes.draw do
   resources :ingredients
   
   resources :products do 
-    resources :reviews, except: [:show, :index]
   end  
   
+  resources :reviews, except: [:show, :index]
+
   resources :users
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  get 'orders/show'
+  # get 'orders/show'
   get 'orders/new'
 
   resources :orders
@@ -67,5 +73,7 @@ Rails.application.routes.draw do
 
   get 'products/index'
   get "/review/:id/remove" => "review#destroy"
+
+  get 'ingredients/new'
 
 end

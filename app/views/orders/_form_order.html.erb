@@ -1,6 +1,45 @@
-<%= form_for @order do |f| %>
+<%= form_for @current_order do |f| %>
+    <h4> Entrega por motoboy? 
+      <%= check_box_tag "mycheckbox", "mycheckbox", false%>
+    </h4>
+    <br>
+    <div id="mycheckboxdiv" style="display:none">
+      <%= f.text_field :shippment_address, :placeholder => 'Endereço', class: 'form-control' %> <br/>
+      <div style="float: right">
+        <p style="float:right"> Acréscimo de <%= "R#{number_to_currency current_order.delivery_price}" %> </p>
+        <br>
+        <div id="mycheckboxdiv">
+          <h4 class="text-right">
+            Preço total:  
+            <span style="color: green">
+              <%= "R#{number_to_currency current_order.subtotal + 10}" %> 
+            </span>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div id="myuncheckboxdiv" style="float: right">
+      <div id="myuncheckboxdiv">
+        <h4 class="text-right">
+          Preço total:  
+          <span style="color: green">
+            <%= "R#{number_to_currency current_order.subtotal}" %> 
+          </span>
+        </h4>
+      </div>
+    </div>
 
-	<%= f.text_field :shippment_address, :placeholder => 'Endereço', class: 'form-control' %> <br />
-	<%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
+		<h4>Forma de pagamento:</h4>
+		<%= f.select :payment_mode, Order.payment_modes.keys.to_a %> <br /> <br />
+
+    <%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
 
 <% end %>
+<br>
+
+<script type="text/javascript">
+$('#mycheckbox').change(function() {
+    $('#mycheckboxdiv').toggle();
+    $('#myuncheckboxdiv').toggle();
+});
+</script>

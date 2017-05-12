@@ -1,25 +1,31 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_action :get_order_items
+  before_action :check_admin, only: [:new, :update, :destroy]
   helper_method :get_cost
 
   # GET /products
   def index
-    #set_current_order
-    @products = Product.search(params[:find])
+    if !current_user.nil?
+      @order = Order.new(:user_id => current_user.id, :order_status_id => 1)
+      set_session_order(@order)
+      @products = Product.search(params[:find])
+      @order_item = current_order.order_items.new
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /products/1
   def show
-     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+   @reviews = Review.where(product_id: @product.id).order("created_at DESC")
 
-    if @reviews.blank?
-      @avg_review = 0
-    else
-      @avg_review = @reviews.average(:rating).round(2)
-    end
+   if @reviews.blank?
+    @avg_review = 0
+  else
+    @avg_review = @reviews.average(:rating).round(2)
+  end
 
- end
+end
 
   # GET /products/new
   def new
@@ -58,7 +64,7 @@ class ProductsController < ApplicationController
   end
 
   def italian_culinary
-      redirect_to :controller => 'products', :action => 'show_category', :category_desc => 0
+    redirect_to :controller => 'products', :action => 'show_category', :category_desc => 0
   end
 
   def oriental_culinary
@@ -74,14 +80,30 @@ class ProductsController < ApplicationController
   end
 
   def show_category
-		if params[:category_desc] != nil
-	  	@products = Product.all.where(:category => params[:category_desc])
-		else
-			redirect_to root_path
-		end
+    if logged_in?
+      if @current_order.nil?
+        @order = Order.new(:user_id => current_user.id, :order_status_id => 1)
+        set_session_order(@order)
+        @order_item = current_order.order_items.new
+        if params[:category_desc] != nil
+          @products = Product.all.where(:category => params[:category_desc])
+        else
+         redirect_to root_path
+       end
+     else
+      @order_item = current_order.order_items.new
+      if params[:category_desc] != nil
+        @products = Product.all.where(:category => params[:category_desc])
+      else
+        redirect_to root_path
+      end
+    end
+  else
+    @products = Product.all.where(:category => params[:category_desc])
   end
+end
 
-  private
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
@@ -92,7 +114,12 @@ class ProductsController < ApplicationController
       params.require(:product).permit(:title, :description, :category, :price, :quantity, {ingredient_ids: []}, :imageproduct)
     end
 
-    def get_order_items
+    def check_admin
+      if is_administrator(current_user)
+        # do nothing
+      else
+        redirect_to root_path
+      end 
     end
-end
+  end
 
