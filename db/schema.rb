@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511180043) do
+ActiveRecord::Schema.define(version: 20170512023558) do
 
   create_table "Orders_Products", id: false, force: :cascade do |t|
     t.integer "order_id",   null: false
@@ -61,10 +61,15 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "type_ingredient"
-    t.integer  "products_id"
   end
 
-  add_index "ingredients", ["products_id"], name: "index_ingredients_on_products_id"
+  create_table "ingredients_products", id: false, force: :cascade do |t|
+    t.integer "ingredient_id", null: false
+    t.integer "product_id",    null: false
+  end
+
+  add_index "ingredients_products", ["ingredient_id", "product_id"], name: "index_ingredients_products_on_ingredient_id_and_product_id"
+  add_index "ingredients_products", ["product_id", "ingredient_id"], name: "index_ingredients_products_on_product_id_and_ingredient_id"
 
   create_table "invoicing_ledger_items", force: :cascade do |t|
     t.integer  "sender_id"
@@ -170,13 +175,10 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.integer  "category"
     t.decimal  "price"
     t.integer  "quantity"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "imageproduct"
-    t.integer  "ingredients_id"
   end
-
-  add_index "products", ["ingredients_id"], name: "index_products_on_ingredients_id"
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
