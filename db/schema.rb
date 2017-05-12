@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170510124711) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "title"
-    t.string   "description"
+    t.float    "price"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "type_ingredient"
@@ -169,16 +169,8 @@ ActiveRecord::Schema.define(version: 20170510124711) do
     t.integer  "order_id"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.integer  "category"
-    t.decimal  "price"
-    t.integer  "quantity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "imageproduct"
-  end
+# Could not dump table "products" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
