@@ -5,15 +5,15 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    if current_order.nil?
+    if !current_user.nil?
       @order = Order.create(:user_id => current_user.id, :order_status_id => 1)
       set_session_order(@order)
       @products = Product.search(params[:find])
       @order_item = current_order.order_items.new
+    else
+      redirect_to root_path
     end
-    @products = Product.search(params[:find])
-    @order_item = current_order.order_items.new
-  end
+    end
 
   # GET /products/1
   def show
@@ -80,23 +80,27 @@ end
   end
 
   def show_category
-    if @current_order.nil?
-      @order = Order.create(:user_id => current_user.id, :order_status_id => 1)
-      set_session_order(@order)
+    if logged_in?
+      if @current_order.nil?
+        @order = Order.create(:user_id => current_user.id, :order_status_id => 1)
+        set_session_order(@order)
+        @order_item = current_order.order_items.new
+        if params[:category_desc] != nil
+          @products = Product.all.where(:category => params[:category_desc])
+        else
+         redirect_to root_path
+       end
+     else
       @order_item = current_order.order_items.new
       if params[:category_desc] != nil
         @products = Product.all.where(:category => params[:category_desc])
       else
-       redirect_to root_path
-     end
-   else
-    @order_item = current_order.order_items.new
-    if params[:category_desc] != nil
-      @products = Product.all.where(:category => params[:category_desc])
-    else
-     redirect_to root_path
-   end
- end
+        redirect_to root_path
+      end
+    end
+  else
+    @products = Product.all.where(:category => params[:category_desc])
+  end
 end
 
 private

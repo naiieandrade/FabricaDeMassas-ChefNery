@@ -5,7 +5,7 @@
 <tr>
 <td><b>Cedente:</b></br>
 Pedro Nery</td>
-<td align><b>Valor:</b></br>R$ <%= current_order.subtotal %></td>
+<td align><b>Valor:</b></br>R$ <%= @bank_billet_payment.order.subtotal + 10 %></td>
 </tr>
 <tr>
 		<td><b>Data processamento:</b></br> <%= Date.today %></td>

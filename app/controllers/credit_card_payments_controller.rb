@@ -32,13 +32,14 @@ class CreditCardPaymentsController < ApplicationController
 
     respond_to do |format|
       if @credit_card_payment.save
-        format.html { redirect_to @credit_card_payment, notice: 'Credit Card Payment was successfully created.' }
-        format.json { render :show, status: :created, location: @credit_card_payment }
+        format.html { redirect_to root_path, notice: 'Credit Card Payment was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @credit_card_payment.errors, status: :unprocessable_entity }
       end
+
     end
+    destroy_session_order
   end
 
   # PATCH/PUT /credit_card_payments/1
@@ -46,8 +47,7 @@ class CreditCardPaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @credit_card_payment.update(credit_card_payment_params)
-        format.html { redirect_to @credit_card_payment, notice: 'Credit Card Payment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @credit_card_payment }
+        format.html { redirect_to edirect_to root_path, notice: 'Credit Card Payment was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @credit_card_payment.errors, status: :unprocessable_entity }

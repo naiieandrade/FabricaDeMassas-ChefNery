@@ -40,13 +40,13 @@ class BankBilletPaymentsController < ApplicationController
 
     respond_to do |format|
       if @bank_billet_payment.save
-        format.html { redirect_to @bank_billet_payment, notice: 'Bank billet payment was successfully created.' }
-        format.json { render :show, status: :created, location: @bank_billet_payment }
+        format.html { redirect_to root_path, notice: 'Bank billet payment was successfully created.' }
       else
         format.html { render :new }
         format.json { render json: @bank_billet_payment.errors, status: :unprocessable_entity }
       end
     end
+    destroy_session_order
   end
 
   # PATCH/PUT /bank_billet_payments/1
@@ -54,8 +54,7 @@ class BankBilletPaymentsController < ApplicationController
   def update
     respond_to do |format|
       if @bank_billet_payment.update(bank_billet_payment_params)
-        format.html { redirect_to @bank_billet_payment, notice: 'Bank billet payment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @bank_billet_payment }
+        format.html { redirect_to root_path, notice: 'Bank billet payment was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @bank_billet_payment.errors, status: :unprocessable_entity }
