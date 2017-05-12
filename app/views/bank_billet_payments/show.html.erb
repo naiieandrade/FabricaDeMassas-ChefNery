@@ -1,9 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag(@png_path) %>
-<br>
-<%= @num.to_s.gsub(/.{1}(?=.)/, '\0 ') %>
-<br>
-
-<%= link_to 'Edit', edit_bank_billet_payment_path(@bank_billet_payment) %> |
-<%= link_to 'Back', bank_billet_payments_path %>
+<center>
+	<table border="1">
+<tr>
+<td><b>Cedente:</b></br>
+Pedro Nery</td>
+<td align><b>Valor:</b></br>R$ <%= current_order.subtotal %></td>
+</tr>
+<tr>
+		<td><b>Data processamento:</b></br> <%= Date.today %></td>
+			<td align="Left"><b>Data vencimento:</b></br> <%= Date.today + 3 %></td>
+		</tr>                                                                   <tr>
+		<td align="center" colspan="2"><%= @num.to_s.gsub(/.{1}(?=.)/, '\0 ') %></br>
+			<%= image_tag(@png_path) %></td>
+		</tr>
+	</table>
+	</br>
+<%= link_to 'Imprimir', '', :onclick => 'window.print();return false;'%>
+</center>

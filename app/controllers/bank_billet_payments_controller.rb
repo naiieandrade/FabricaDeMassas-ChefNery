@@ -35,6 +35,9 @@ class BankBilletPaymentsController < ApplicationController
   def create
     @bank_billet_payment = BankBilletPayment.new(bank_billet_payment_params)
 
+		@bank_billet_payment.order = current_order
+		@bank_billet_payment.amount = @bank_billet_payment.order.subtotal
+
     respond_to do |format|
       if @bank_billet_payment.save
         format.html { redirect_to @bank_billet_payment, notice: 'Bank billet payment was successfully created.' }

@@ -27,6 +27,8 @@ class CreditCardPaymentsController < ApplicationController
   # POST /credit_card_payments.json
   def create
     @credit_card_payment = CreditCardPayment.new(credit_card_payment_params)
+		@credit_card_payment.order = current_order
+		@credit_card_payment.amount = @credit_card_payment.order.subtotal
 
     respond_to do |format|
       if @credit_card_payment.save

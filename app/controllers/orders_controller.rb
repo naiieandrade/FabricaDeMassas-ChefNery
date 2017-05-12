@@ -3,12 +3,12 @@ class OrdersController < ApplicationController
   def index
   	if(current_order.nil?)
   		@order_status = OrderStatus.all
-		@orders = Order.all
-	end
+			@orders = Order.all
+		end
 
-	if logged_in? and is_administrator(current_user)
-		@orders = sort_orders
-	end
+		if logged_in? and is_administrator(current_user)
+			@orders = sort_orders
+		end
   end
 
 	# def show
@@ -32,12 +32,17 @@ class OrdersController < ApplicationController
 	end
 
 	def update
-        if current_order.update(order_params)
-            flash[:success] = "Pedido atualizado"
-           	redirect_to '/invoices/create'
-        else
-          render 'edit'
-        end
+    if current_order.update(order_params)
+
+			if current_order.payment_mode == "Cartão de Crédito"
+    		redirect_to :controller => 'credit_card_payments', :action => 'new'
+			else
+    		redirect_to :controller => 'bank_billet_payments', :action => 'new'
+			end
+
+    else
+      render 'edit'
+    end
     end
 
 	def destroy
