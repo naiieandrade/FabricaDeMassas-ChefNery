@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "type_ingredient"
+    t.integer  "products_id"
   end
+
+  add_index "ingredients", ["products_id"], name: "index_ingredients_on_products_id"
 
   create_table "invoicing_ledger_items", force: :cascade do |t|
     t.integer  "sender_id"
@@ -167,10 +170,13 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.integer  "category"
     t.decimal  "price"
     t.integer  "quantity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "imageproduct"
+    t.integer  "ingredients_id"
   end
+
+  add_index "products", ["ingredients_id"], name: "index_products_on_ingredients_id"
 
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
@@ -195,9 +201,6 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.integer  "product_unit"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-  end
-
-  create_table "tables", force: :cascade do |t|
   end
 
   create_table "users", force: :cascade do |t|

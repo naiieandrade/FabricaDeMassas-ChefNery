@@ -3,24 +3,29 @@ class OrderItemsController < ApplicationController
     @order = current_order
     if(!@order.nil?)
       @order_item = @order.order_items.new(order_item_params)
+      @order.save
+      session[:order_id] = @order.id
     end
-    @order.save
-    session[:order_id] = @order.id
     redirect_to "/products"
+    set_session_order(@order)
   end
 
   def update
-    @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    @order_item.update_attributes(order_item_params)
-    @order_items = @order.order_items
+    if !current_order.nil?
+      @order = current_order
+      @order_item = @order.order_items.find(params[:id])
+      @order_item.update_attributes(order_item_params)
+      @order_items = @order.order_items
+    end
   end
 
   def destroy
-    @order = current_order
-    @order_item = @order.order_items.find(params[:id])
-    @order_item.destroy
-    @order_items = @order.order_items
+    if !current_order.nil?
+      @order = current_order
+      @order_item = @order.order_items.find(params[:id])
+      @order_item.destroy
+      @order_items = @order.order_items
+    end
   end
 
 

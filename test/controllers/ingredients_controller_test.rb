@@ -2,6 +2,7 @@ require 'test_helper'
 
 class IngredientsControllerTest < ActionController::TestCase
   setup do
+    log_in(users(:one))
     @ingredient = ingredients(:one)
   end
 
@@ -18,7 +19,7 @@ class IngredientsControllerTest < ActionController::TestCase
 
   test "should create ingredient" do
     assert_difference('Ingredient.count') do
-      post :create, ingredient: { price: @ingredient.price, title: @ingredient.title }
+      post :create, ingredient: { title: @ingredient.title }
     end
 
     assert_redirected_to ingredient_path(assigns(:ingredient))
@@ -35,7 +36,7 @@ class IngredientsControllerTest < ActionController::TestCase
   end
 
   test "should update ingredient" do
-    patch :update, id: @ingredient, ingredient: { price: @ingredient.price, title: @ingredient.title }
+    patch :update, id: @ingredient, ingredient: { title: @ingredient.title }
     assert_redirected_to ingredient_path(assigns(:ingredient))
   end
 

@@ -3,6 +3,7 @@ require 'test_helper'
 class ProductsControllerTest < ActionController::TestCase
   setup do
     @product = products(:one)
+    log_in(users(:one))
   end
 
   test "should get index" do

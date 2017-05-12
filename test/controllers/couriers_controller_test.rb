@@ -2,6 +2,7 @@ require 'test_helper'
 
 class CouriersControllerTest < ActionController::TestCase
   setup do
+    log_in(users(:one))
     @courier = couriers(:one)
   end
 

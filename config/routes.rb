@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   get 'order_items/destroy'
 
+  get 'comments/create'
+
   resources :payments
 
   get 'sessions/new'
@@ -33,13 +35,14 @@ Rails.application.routes.draw do
   resources :ingredients
   
   resources :products do 
-    resources :reviews, except: [:show, :index]
   end  
   
+  resources :reviews, except: [:show, :index]
+
   resources :users
   resource :cart, only: [:show]
   resources :order_items, only: [:create, :update, :destroy]
-  get 'orders/show'
+  # get 'orders/show'
   get 'orders/new'
 
   resources :orders

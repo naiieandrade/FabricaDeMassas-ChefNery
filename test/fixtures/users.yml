@@ -4,3 +4,4 @@ one:
   name: MyString
   email: MyString@gmail.com
   password_digest: 123456
+  is_administrator: true

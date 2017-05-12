@@ -1,17 +1,17 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :set_review, only: [:edit, :update, :destroy]
   before_action :set_product
   
   # GET /reviews
   # GET /reviews.json
-  def index
-    @reviews = Review.all
-  end
+  # def index
+  #   @reviews = Review.all
+  # end
 
   # GET /reviews/1
   # GET /reviews/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /reviews/new
   def new
@@ -25,8 +25,7 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    if logged_in?
-      current_user
+    if logged_in? && !@product.nil?
       @review = @current_user.reviews.new(review_params)
       @review.product_id = @product.id
 
@@ -72,7 +71,9 @@ class ReviewsController < ApplicationController
     end
 
     def set_product
-      @product = Product.find(params[:product_id])
+      if !params[:product_id].nil?
+        @product = Product.find(params[:product_id])
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

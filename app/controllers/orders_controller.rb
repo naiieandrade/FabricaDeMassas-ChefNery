@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  
   def index
   	@order_status = OrderStatus.all
 	@orders = Order.all
@@ -8,21 +9,18 @@ class OrdersController < ApplicationController
 	end
   end
 
-	def show
-	end
+	# def show
+	# end
 
   def new
 		@order = Order.new
   end
 
 	def create
-		@order = Order.create
-		set_session_order(@order)
-		current_order.user = current_user
-		order_status = OrderStatus.find(1)
-		current_order.order_status = order_status
+		@order = Order.create(order_params)
+		@order.order_items = current_order.order_items
+		@order.user = current_user
 		if current_order.save
-			#flash[:success] = "Pedido realizado com sucesso"
 			redirect_to '/products'
 		
 		else
@@ -34,23 +32,10 @@ class OrdersController < ApplicationController
 	def update
         if current_order.update(order_params)
             flash[:success] = "Pedido atualizado"
-            #redirect_to orders_path
-            # send email
-            OrderEmail.order_request(current_user, current_order).deliver
-            OrderEmail.order_confirmation(current_user, current_order).deliver
-            redirect_to '/invoices/create'
+           	redirect_to '/invoices/create'
         else
           render 'edit'
         end
-    end
-
-    def update_status
-    	@order = Order.find(params[:order_id])
-    	@order_status = OrderStatus.find(params[:order_status_id])
-    	@order.order_status = @order_status
-  		@order.save!
-  		flash[:success] = "Pedido atualizado"
-  		redirect_to orders_path
     end
 
 	def destroy

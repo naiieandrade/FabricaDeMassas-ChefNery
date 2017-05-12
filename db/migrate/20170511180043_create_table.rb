@@ -1,6 +1,6 @@
 class CreateTable < ActiveRecord::Migration
   def change
-    create_table :tables do |t|
-    end
+    add_reference :products, :ingredients, index: true
+    add_reference :ingredients, :products, index: true
   end
 end

@@ -20,7 +20,15 @@ gem 'simplecov'
 gem 'invoicing'
 
 gem 'prawn'
+
 gem 'prawn-table'
+
+# memento pattern 
+gem 'memento', '~> 0.4.3'
+
+# observer pattern 
+gem 'rails-observers'
+
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -71,6 +79,6 @@ gem 'bcrypt',  '~> 3.1.11'
 
 gem 'figaro'
 
-gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+gem 'carrierwave'
 
 gem 'mini_magick', '~> 4.3'
