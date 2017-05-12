@@ -1,4 +1,6 @@
 class CreditCardPaymentsController < ApplicationController
+	before_action :logged_in_user
+
   before_action :set_credit_card_payment, only: [:show, :edit, :update, :destroy]
 
   # GET /credit_card_payments

@@ -7,9 +7,6 @@ class Product < ActiveRecord::Base
   has_many :reviews
   mount_uploader :imageproduct, ImageProductUploader
 
-
-
-
   enum category: ["Culinária Italiana", "Culinária Oriental", "Culinária Árabe", "Culinária Brasileira"]
 
   TITLE_MIN_LENGTH = 3
@@ -25,6 +22,5 @@ class Product < ActiveRecord::Base
     	all
     end
   end
-
 
 end

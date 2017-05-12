@@ -1,4 +1,6 @@
 class BankBilletPaymentsController < ApplicationController
+	before_action :logged_in_user
+
   before_action :set_bank_billet_payment, only: [:show, :edit, :update, :destroy]
 
   include BankBilletPaymentsHelper

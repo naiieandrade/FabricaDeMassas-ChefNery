@@ -17,4 +17,12 @@
   <% end %>
 
 	<%= render 'orders/form_order', :locals => {:controller => 'orders', :action => 'update'} %>
-  <%end%>
+
+<% end %>
+
+<script type="text/javascript">
+$('#mycheckbox').change(function() {
+    $('#mycheckboxdiv').toggle();
+    $('#myuncheckboxdiv').toggle();
+});
+</script>

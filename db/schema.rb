@@ -144,6 +144,7 @@ ActiveRecord::Schema.define(version: 20170512023558) do
     t.integer  "courier_id"
     t.integer  "order_status_id"
     t.decimal  "delivery_price",    precision: 8, scale: 2, default: 10.0
+    t.integer  "payment_mode"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"

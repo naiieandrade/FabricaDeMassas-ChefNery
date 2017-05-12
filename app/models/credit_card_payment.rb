@@ -2,7 +2,7 @@ require 'net/http'
 require 'uri'
 
 class CreditCardPayment < PaymentStrategy
-	
+
 	attr_accessor :cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear
 	MERCHANT_ID = "0000992"
   INTEGRATION_URL = "https://gateway.cardstream.com/direct/"

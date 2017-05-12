@@ -23,23 +23,23 @@
 <div class="control-group">
   <%= f.label :amount, 'Valor', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :amount, :class => 'text_field', :readonly => true %>
+    <%= f.text_field :amount, :class => 'form-control', :readonly => true %>
     <%# Poe a de baixo pra passar o valor do pedido %>
-    <%#= f.text_field "R$ #{pedido.total_price}", :class => 'text_field', :readonly => true %>
+    <%#= f.text_field "R$ #{pedido.total_price}", :class => 'form-control', :readonly => true %>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :cardNumber,'Número do cartão', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :cardNumber, :class => 'text_field' %>
+    <%= f.text_field :cardNumber, :class => 'form-control' %>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :cardCVV,'Código de segurança', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :cardCVV, :class => 'text_field' %>
+    <%= f.text_field :cardCVV, :class => 'form-control' %>
   </div>
 </div>
 
@@ -59,7 +59,7 @@
 
 <div class="form-actions">
   <%= tag(:br) %>
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit 'Efetuar pagamento', :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
               credit_card_payments_path, :class => 'btn' %>
 </div>
