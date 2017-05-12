@@ -11,5 +11,6 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
   include OrdersHelper
+  include OrderItemsHelper
   include CouriersHelper
 end

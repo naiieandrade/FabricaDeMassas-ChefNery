@@ -1,7 +1,7 @@
 <!-- This view shows the format for each product with name, image, price, link to product and insert to cart-->
 
 <!-- Shows all products-->
-<%= form_for @order_item, remote: true do |f| %>
+<%= form_for order_item, remote: true do |f| %>
   <%= content_tag :div, class: "padding-between-containers" do %>
     <%= content_tag :div, class: "container" do %>
       <%= content_tag :div, class: "row" do %>

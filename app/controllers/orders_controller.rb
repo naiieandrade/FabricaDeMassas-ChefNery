@@ -17,11 +17,9 @@ class OrdersController < ApplicationController
   end
 
 	def create
-		@order = Order.create
-		set_session_order(@order)
-		current_order.user = current_user
-		order_status = OrderStatus.find(1)
-		current_order.order_status = order_status
+		@order = Order.create(order_params)
+		@order.order_items = current_order.order_items
+		@order.user = current_user
 		if current_order.save
 			redirect_to '/products'
 		
@@ -40,14 +38,14 @@ class OrdersController < ApplicationController
         end
     end
 
-    def update_status
-    	@order = Order.find(params[:order_id])
-    	@order_status = OrderStatus.find(params[:order_status_id])
-    	@order.order_status = @order_status
-  		@order.save!
-  		flash[:success] = "Pedido atualizado"
-  		redirect_to orders_path
-    end
+    #def update_status
+    #	@order = Order.find(params[:order_id])
+    #	@order_status = OrderStatus.find(params[:order_status_id])
+    #	@order.order_status = @order_status
+  	#	@order.save!
+  	#	flash[:success] = "Pedido atualizado"
+  	#	redirect_to orders_path
+    #end
 
 	def destroy
 		@order = Order.find params[:id]
