@@ -1,7 +1,7 @@
 module OrdersHelper
 
 	def current_order
-		if !session[:order_id].nil? && Order.where(id: current_user.id).nil?
+		if !session[:order_id].nil?
 			@current_order = Order.find(session[:order_id])
 		else
 			@current_order = Order.new

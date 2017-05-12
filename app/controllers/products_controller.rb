@@ -5,8 +5,12 @@ class ProductsController < ApplicationController
 
   # GET /products
   def index
-    @order = Order.create(:user_id => current_user.id, :order_status_id => 1)
-    set_session_order(@order)
+    if current_order.nil?
+      @order = Order.create(:user_id => current_user.id, :order_status_id => 1)
+      set_session_order(@order)
+      @products = Product.search(params[:find])
+      @order_item = current_order.order_items.new
+    end
     @products = Product.search(params[:find])
     @order_item = current_order.order_items.new
   end

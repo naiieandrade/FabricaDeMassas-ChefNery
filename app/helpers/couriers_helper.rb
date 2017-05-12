@@ -15,6 +15,6 @@ module CouriersHelper
 	def list_all_orders
 		orders = Order.where(:courier_id => nil)
 
-		orders.map{|order| [User.find(order.user_id).name, order]}
+		orders.map{|order| [User.find(order.user_id).name, order.shippment_address]}
 	end
 end

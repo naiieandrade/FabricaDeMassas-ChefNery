@@ -17,14 +17,6 @@ class IngredientsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create ingredient" do
-    assert_difference('Ingredient.count') do
-      post :create, ingredient: { title: @ingredient.title }
-    end
-
-    assert_redirected_to ingredient_path(assigns(:ingredient))
-  end
-
   test "should show ingredient" do
     get :show, id: @ingredient
     assert_response :success
@@ -33,11 +25,6 @@ class IngredientsControllerTest < ActionController::TestCase
   test "should get edit" do
     get :edit, id: @ingredient
     assert_response :success
-  end
-
-  test "should update ingredient" do
-    patch :update, id: @ingredient, ingredient: { title: @ingredient.title }
-    assert_redirected_to ingredient_path(assigns(:ingredient))
   end
 
   test "should destroy ingredient" do

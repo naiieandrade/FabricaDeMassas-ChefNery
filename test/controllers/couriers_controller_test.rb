@@ -25,11 +25,6 @@ class CouriersControllerTest < ActionController::TestCase
     assert_redirected_to courier_path(assigns(:courier))
   end
 
-  test "should show courier" do
-    get :show, id: @courier
-    assert_response :success
-  end
-
   test "should get edit" do
     get :edit, id: @courier
     assert_response :success

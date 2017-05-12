@@ -6,19 +6,6 @@ class ReviewsControllerTest < ActionController::TestCase
     @review = reviews(:one)
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
-
-  test "should create review" do
-    assert_difference('Review.count') do
-      post :create, review: { comment: @review.comment, rating: @review.rating}
-    end
-
-    assert_redirected_to review_path(assigns(:review))
-  end
-
   test "should get edit" do
     get :edit, id: @review
     assert_response :success
