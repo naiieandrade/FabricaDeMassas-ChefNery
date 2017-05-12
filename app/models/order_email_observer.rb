@@ -1,5 +1,5 @@
 class OrderEmailObserver < ActiveRecord::Observer
-	observe :order, :user
+	observe :order
 	
 	def after_commit(order)
 		if !order.shippment_address.nil?
