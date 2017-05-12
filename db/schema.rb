@@ -180,6 +180,12 @@ ActiveRecord::Schema.define(version: 20170512023558) do
     t.string   "imageproduct"
   end
 
+
+  create_table "review_histories", force: :cascade do |t|
+    t.integer "version_number"
+    t.integer "versions",       default: 0
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer  "rating"
     t.text     "comment"
