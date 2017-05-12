@@ -11,8 +11,6 @@
     </div>
   <% end %>
 
-
-
   <!-- input for title -->
   <%= content_tag :div, class: "space-between-fields-10" do %>
     <%= f.label :Nome, class: "text-white" %><br>
@@ -33,12 +31,37 @@
 
   <!-- dropdown list for category -->
   <%= content_tag :div, class: "space-between-fields-10" do %>
+    <%= f.label "Categoria", class: "text-white" %>
     <%= f.select :category, Product.categories.to_a.map {|w| [w.to_s.humanize, w]} %>
   <% end %>
 
   <!-- checkboxes for ingredients -->
   <%= content_tag :div, class: "space-between-fields-10 text-white" do %>
-    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :title %>
+    <%= f.label "Molhos"%>
+    <%= tag(:br) %>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.search('sauce'), :id, :title %>
+  <% end %>
+
+  <%= content_tag :div, class: "space-between-fields-10 text-white" do %>
+    <%= f.label "Massas"%>
+    <%= tag(:br) %>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.search('pasta'), :id, :title %>
+  <% end %>
+
+  <%= content_tag :div, class: "space-between-fields-10 text-white" do %>
+    <%= f.label "Temperos"%>
+    <%= tag(:br) %>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.search('spice'), :id, :title %>
+  <% end %>
+
+  <%= content_tag :div, class: "space-between-fields-10 text-white" do %>
+    <%= f.label "Recheio"%>
+    <%= tag(:br) %>
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.search('filling'), :id, :title %>
+  <% end %>
+
+  <%= content_tag :div, class: "space-between-fields-10 text-white" do %>
+    <% link_to "Faltando algum ingrediente? Adicione aqui!", new_ingredient_path %>
   <% end %>
 
   <%= content_tag :div, class: "space-between-fields-10" do %>

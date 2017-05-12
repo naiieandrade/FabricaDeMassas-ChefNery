@@ -44,11 +44,23 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.integer  "status",     default: 0
   end
 
-  create_table "ingredients", force: :cascade do |t|
-    t.string   "title"
-    t.float    "price"
+  create_table "fillings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ingredient_factories", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "ingredient_id"
+  end
+
+  create_table "ingredients", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "type_ingredient"
   end
 
   create_table "invoicing_ledger_items", force: :cascade do |t|
@@ -129,6 +141,11 @@ ActiveRecord::Schema.define(version: 20170511180043) do
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
 
+  create_table "pasta", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payments", force: :cascade do |t|
     t.float    "amount"
     t.integer  "responseCode"
@@ -162,6 +179,16 @@ ActiveRecord::Schema.define(version: 20170511180043) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "product_id"
+  end
+
+  create_table "sauces", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "spices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "storages", force: :cascade do |t|

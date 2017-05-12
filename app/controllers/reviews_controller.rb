@@ -25,14 +25,19 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    current_user
-    @review = @current_user.reviews.new(review_params)
-    @review.product_id = @product.id
+    if logged_in?
+      current_user
+      @review = @current_user.reviews.new(review_params)
+      @review.product_id = @product.id
 
-    if @review.save
-      redirect_to @product, notice: 'Sua avaliação foi registrada.'
+      if @review.save
+        redirect_to @product, notice: 'Sua avaliação foi registrada.'
+      else
+        render :new 
+      end
     else
-      render :new 
+      flash[:error] = "É necessário estar logado para fazer revisão"
+      redirect_to users_path
     end
   end
 

@@ -68,4 +68,6 @@ Rails.application.routes.draw do
   get 'products/index'
   get "/review/:id/remove" => "review#destroy"
 
+  get 'ingredients/new'
+
 end
