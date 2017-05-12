@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :bank_billet_payments
   get 'invoices/index'
 
   get 'invoices/show'
@@ -19,7 +20,9 @@ Rails.application.routes.draw do
 
   get 'comments/create'
 
-  resources :payments
+  resources :credit_card_payments
+
+	resources :bank_billet_payments
 
   get 'sessions/new'
 

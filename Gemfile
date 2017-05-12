@@ -29,6 +29,8 @@ gem 'memento', '~> 0.4.3'
 # observer pattern 
 gem 'rails-observers'
 
+gem 'chunky_png'
+gem 'barby'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

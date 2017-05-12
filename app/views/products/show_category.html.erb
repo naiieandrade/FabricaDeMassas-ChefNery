@@ -1,7 +1,6 @@
 <%= content_tag :div, :class => "container" do -%>
 
   <h1></h1>
-
   <% @products.each do |product| %>
             <%= render "product_row", product: product, order_item: @order_item %>
   <% end %>

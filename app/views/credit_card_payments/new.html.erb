@@ -1,14 +1,14 @@
 <div class="container">
-<% if @payment.errors.any? %>
+<% if @credit_card_payment.errors.any? %>
   <div class="alert alert-error">
     <a class="close" data-dismiss="alert">×</a>
-    <% for message in @payment.errors.full_messages do %>
-      <font color='red'> <%= message%> </font>
+    <% for message in @credit_card_payment.errors.full_messages do %>
+      <font color='red'> <%= message %> </font>
     <% end %>
   </div> 
 <% end %>
 
-<%- model_class = Payment -%>
+<%- model_class = CreditCardPayment -%>
 <div class="row" >
 <div style="float: left">
 <div class="page-header">
@@ -17,29 +17,29 @@
   <h1> Efetuar pagamento </h1>
 </div>
 
-<%= form_for @payment, :html => { :class => 'form-horizontal' } do |f| %>
+<%= form_for @credit_card_payment, :html => { :class => 'form-horizontal' } do |f| %>
 
 <div style="display:inline-block" >
 <div class="control-group">
   <%= f.label :amount, 'Valor', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :amount, :class => 'text_field', :readonly => true %>
+    <%= f.text_field :amount, :class => 'form-control', :readonly => true, :placeholder => current_order.subtotal.to_s %>
     <%# Poe a de baixo pra passar o valor do pedido %>
-    <%#= f.text_field "R$ #{pedido.total_price}", :class => 'text_field', :readonly => true %>
+    <%#= f.text_field "R$ #{pedido.total_price}", :class => 'form-control', :readonly => true %>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :cardNumber,'Número do cartão', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :cardNumber, :class => 'text_field' %>
+    <%= f.text_field :cardNumber, :class => 'form-control' %>
   </div>
 </div>
 
 <div class="control-group">
   <%= f.label :cardCVV,'Código de segurança', :class => 'control-label' %>
   <div class="controls">
-    <%= f.text_field :cardCVV, :class => 'text_field' %>
+    <%= f.text_field :cardCVV, :class => 'form-control' %>
   </div>
 </div>
 
@@ -59,9 +59,9 @@
 
 <div class="form-actions">
   <%= tag(:br) %>
-  <%= f.submit nil, :class => 'btn btn-primary' %>
+  <%= f.submit 'Efetuar pagamento', :class => 'btn btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-              payments_path, :class => 'btn' %>
+              credit_card_payments_path, :class => 'btn' %>
 </div>
 </div>
 

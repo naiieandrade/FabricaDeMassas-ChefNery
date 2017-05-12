@@ -1,8 +1,8 @@
 require 'net/http'
 require 'uri'
 
-class Payment < ActiveRecord::Base
-	
+class CreditCardPayment < PaymentStrategy
+
 	attr_accessor :cardNumber, :cardCVV, :cardExpiryMonth, :cardExpiryYear
 	MERCHANT_ID = "0000992"
   INTEGRATION_URL = "https://gateway.cardstream.com/direct/"
@@ -27,7 +27,7 @@ class Payment < ActiveRecord::Base
 		}
 	end
 
-	def credit_card_api_access
+	def api_access
     uri = URI.parse(INTEGRATION_URL)
     http = Net::HTTP.new(uri.host, 443)
     http.use_ssl = true

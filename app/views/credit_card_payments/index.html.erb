@@ -1,0 +1,46 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h1>Listing Payments</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Responsecode</th>
+        <th>Responsemessage</th>
+        <th>Xref</th>
+        <th>Amountreceived</th>
+        <th>Transactionid</th>
+        <th>Cardnumbermask</th>
+        <th>Cardtypecode</th>
+        <th>Cardtype</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @credit_card_payments.each do |credit_card_payment| %>
+        <tr>
+          <td><%= credit_card_payment.amount %></td>
+          <td><%= credit_card_payment.responseCode %></td>
+          <td><%= credit_card_payment.responseMessage %></td>
+          <td><%= credit_card_payment.xref %></td>
+          <td><%= credit_card_payment.amountReceived %></td>
+          <td><%= credit_card_payment.transactionID %></td>
+          <td><%= credit_card_payment.cardNumberMask %></td>
+          <td><%= credit_card_payment.cardTypeCode %></td>
+          <td><%= credit_card_payment.cardType %></td>
+          <td><%= link_to 'Show', credit_card_payment %></td>
+          <td><%= link_to 'Edit', edit_credit_card_payment_path(credit_card_payment) %></td>
+          <td><%= link_to 'Destroy', credit_card_payment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Payment', new_credit_card_payment_path %>
+
+</div>

@@ -28,11 +28,14 @@
         </h4>
       </div>
     </div>
+
+		<h4>Forma de pagamento:</h4>
+		<%= f.select :payment_mode, Order.payment_modes.keys.to_a %> <br /> <br />
+
     <%= f.submit "Enviar pedido", class: 'btn btn-primary' %>
 
 <% end %>
 <br>
-  <%= button_to "Adicionar mais produtos ao carrinho", products_path, :method => :get , class: 'btn btn-primary'%>
 
 <script type="text/javascript">
 $('#mycheckbox').change(function() {

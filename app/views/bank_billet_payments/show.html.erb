@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<center>
+	<table border="1">
+<tr>
+<td><b>Cedente:</b></br>
+Pedro Nery</td>
+<td align><b>Valor:</b></br>R$ <%= @bank_billet_payment.order.subtotal + 10 %></td>
+</tr>
+<tr>
+		<td><b>Data processamento:</b></br> <%= Date.today %></td>
+			<td align="Left"><b>Data vencimento:</b></br> <%= Date.today + 3 %></td>
+		</tr>                                                                   <tr>
+		<td align="center" colspan="2"><%= @num.to_s.gsub(/.{1}(?=.)/, '\0 ') %></br>
+			<%= image_tag(@png_path) %></td>
+		</tr>
+	</table>
+	</br>
+<%= link_to 'Imprimir', '', :onclick => 'window.print();return false;'%>
+</center>

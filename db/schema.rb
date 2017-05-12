@@ -50,9 +50,8 @@ ActiveRecord::Schema.define(version: 20170512023558) do
   end
 
   create_table "ingredient_factories", force: :cascade do |t|
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "ingredient_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -145,6 +144,7 @@ ActiveRecord::Schema.define(version: 20170512023558) do
     t.integer  "courier_id"
     t.integer  "order_status_id"
     t.decimal  "delivery_price",    precision: 8, scale: 2, default: 10.0
+    t.integer  "payment_mode"
   end
 
   add_index "orders", ["order_status_id"], name: "index_orders_on_order_status_id"
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 20170512023558) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "payments", force: :cascade do |t|
+  create_table "payment_strategies", force: :cascade do |t|
     t.float    "amount"
     t.integer  "responseCode"
     t.string   "responseMessage"
@@ -179,7 +179,6 @@ ActiveRecord::Schema.define(version: 20170512023558) do
     t.datetime "updated_at",   null: false
     t.string   "imageproduct"
   end
-
 
   create_table "review_histories", force: :cascade do |t|
     t.integer "version_number"

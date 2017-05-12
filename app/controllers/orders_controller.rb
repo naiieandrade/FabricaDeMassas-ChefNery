@@ -1,30 +1,27 @@
 class OrdersController < ApplicationController
-  
-  def index
-  	if(current_order.nil?)
-  		@order_status = OrderStatus.all
-		@orders = Order.all
-	end
 
-	if logged_in? and is_administrator(current_user)
-		@orders = sort_orders
+	def index
+		@order_status = OrderStatus.all
+		@orders = Order.all
+		if logged_in? and is_administrator(current_user)
+			@orders = sort_orders
+		end
 	end
-  end
 
 	# def show
 	# end
 
-  def new
+	def new
 		@order = Order.new
-  end
+	end
 
 	def create
-		@order = Order.create(order_params)
+		@order = Order.new(order_params)
 		@order.order_items = current_order.order_items
 		@order.user = current_user
-		if current_order.save
+		if @order.save
 			redirect_to '/products'
-		
+
 		else
 			flash[:error] = "Ocorreu um erro, tente novamente"
 			render :new	
@@ -32,13 +29,18 @@ class OrdersController < ApplicationController
 	end
 
 	def update
-        if current_order.update(order_params)
-            flash[:success] = "Pedido atualizado"
-           	redirect_to '/invoices/create'
-        else
-          render 'edit'
-        end
-    end
+		if current_order.update(order_params)
+
+			if current_order.payment_mode == "Cartão de Crédito"
+				redirect_to :controller => 'credit_card_payments', :action => 'new'
+			else
+				redirect_to :controller => 'bank_billet_payments', :action => 'new'
+			end
+			
+		else
+			render 'edit'
+		end
+	end
 
 	def destroy
 		@order = Order.find params[:id]
@@ -48,8 +50,8 @@ class OrdersController < ApplicationController
 
 	private
 
-		def order_params
-			params.require(:order).permit!
-		end
+	def order_params
+		params.require(:order).permit!
+	end
 
 end
