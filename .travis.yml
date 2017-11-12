@@ -1,7 +1,8 @@
 sudo: required 
 
 before_script:
-  - bundle rake db:migrate
+  - bundle install
+  - rake db:migrate
 
 addons:
   apt:
