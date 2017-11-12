@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.6'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '1.3.12'
 
 # Use bootstap for front-end
 gem 'bootstrap-sass', '~> 3.2.0'
