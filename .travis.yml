@@ -1,7 +1,7 @@
 sudo: required 
 
 before_script:
-  - bundle exec rails db:create db:migrate
+  - bundle exec rails 
 
 addons:
   apt:
@@ -14,5 +14,9 @@ language: ruby
 rvm:
   - 2.3.3
 script:
-  - bundle exec rspec
+  - bundle exec rake db:drop
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rake db:seed
+  - bundle exec rake
 dist: xenial
