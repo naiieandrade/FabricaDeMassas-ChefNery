@@ -21,9 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
+  url: <%= ENV['DATABASE_URL'] =>
   adapter: postgresql
   database: dbproduction
   pool: 5
   timeout: 5000
-  username: myuser
-  passsword: pass
