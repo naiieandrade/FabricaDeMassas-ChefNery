@@ -91,3 +91,7 @@ gem 'figaro'
 gem 'carrierwave'
 
 gem 'mini_magick', '~> 4.3'
+
+# gem loka
+
+gem 'loka'
