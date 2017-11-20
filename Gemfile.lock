@@ -208,7 +208,7 @@ DEPENDENCIES
   loka
   memento (~> 0.4.3)
   mini_magick (~> 4.3)
-  pg
+  pg (~> 0.21.0)
   prawn
   prawn-table
   puma (~> 3.0)
