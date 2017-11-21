@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  web:
+    build:
+      dockerfile: fabrica.dockerfile
+      context: .
+    ports:
+      - "8000:3000"
+    volumes:
+      - "/home/matheusss03/nova_fabrica:/usr/src/app"
+    depends_on:
+      - db
+    networks:
+      - "production-network"
+    container_name: web
+    command: rails server -b 0.0.0.0
+
+  db:
+    image: postgres
+    networks:
+      - "production-network"
+    container_name: db
+
+networks:
+  production-network:
+    driver: bridge

@@ -92,6 +92,12 @@ gem 'carrierwave'
 
 gem 'mini_magick', '~> 4.3'
 
+gem 'execjs'
+
+gem 'therubyracer'
+
+gem 'libv8', '~> 3.16', '>= 3.16.14.13'
+
 # gem loka
 
 gem 'loka'

@@ -81,3 +81,22 @@ Acesse a aplicação através do link: http://0.0.0.0:3000
 
 ### Docker 
 
+Pré-Requisito
+
+* Ter o Docker instalado
+* Ter o Docker Compose instalado
+
+Os comandos abaixo foram voltados para usuários que utilizam o sistema operacional Linux.
+
+Para o projeto deve se baixar o repositório ou clonar com o seguinte comando:
+
+```git clone https://github.com/naiieandrade/FabricaDeMassas-ChefNery```
+
+Na pasta do projeto:
+
+```
+docker-compose build
+docker-compose up
+```
+
+Acesse a aplicação através do link: http://0.0.0.0:8000
