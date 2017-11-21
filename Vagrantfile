@@ -14,9 +14,13 @@ Vagrant.configure("2") do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
-  config.vm.provision :shell, path: "vagrant_config/install-rvm.sh", args: "stable"
-  config.vm.provision :shell, path: "vagrant_config/install-ruby.sh", args: "2.3.3"
-  config.vm.provision :shell, path: "vagrant_config/install-rails.sh", args: "4.2.6"
+  #config.vm.provision :shell, path: "vagrant_config/install-rvm.sh", args: "stable"
+  #config.vm.provision :shell, path: "vagrant_config/install-ruby.sh", args: "2.3.3"
+  #config.vm.provision :shell, path: "vagrant_config/install-rails.sh", args: "4.2.6"
+
+  config.vm.provision "chef_solo" do |chef|
+      chef.add_recipe "rails"
+  end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -27,7 +31,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
-  config.vm.network "forwarded_port", guest: 3000, host: 3000
+  # config.vm.network "forwarded_port", guest: 3000, host: 3000
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -51,13 +55,8 @@ Vagrant.configure("2") do |config|
   # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
   #   vb.gui = true
-  config.vm.provider "virtualbox" do |vb|
-    vb.name = "chef"
-    vb.gui = false
-    vb.memory = "1024"
-    vb.cpus = 2
-  end
-  #
+
+  
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
   # end
